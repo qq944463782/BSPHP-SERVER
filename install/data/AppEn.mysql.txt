@@ -1,0 +1,704 @@
+
+
+CREATE TABLE `bs_php_add` (
+  `id` int(11) NOT NULL COMMENT '自增ID',
+  `add_leix` varchar(255) NOT NULL COMMENT '添加类型',
+  `add_table` varchar(255) NOT NULL COMMENT '关联表',
+  `add_qq` varchar(255) NOT NULL COMMENT 'QQ号',
+  `add_txt` text NOT NULL COMMENT '添加内容',
+  `add_uid` varchar(255) NOT NULL COMMENT '用户UID',
+  `add_date` date NOT NULL COMMENT '添加日期',
+  `add_daihao` int(8) DEFAULT '0' COMMENT '软件代号'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='添加记录表';
+
+CREATE TABLE `bs_php_admin` (
+  `Admin_ID` int(11) NOT NULL COMMENT '管理员ID',
+  `Admin_AdminUserName` varchar(15) NOT NULL COMMENT '管理员用户名',
+  `Admin_AdminPassWord` varchar(32) NOT NULL COMMENT '管理员密码',
+  `Admin_MiBao` varchar(15) NOT NULL COMMENT '密保',
+  `Admin_CaoShi` int(11) DEFAULT '0' COMMENT '操作次数',
+  `Admin_LoGinIP` varchar(255) DEFAULT NULL COMMENT '登录IP',
+  `Admin_LoGinNum` int(11) DEFAULT '0' COMMENT '登录次数',
+  `Admin_LoGDaTe` datetime DEFAULT NULL COMMENT '最后登录时间',
+  `Admin_IsLock` tinyint(1) DEFAULT '0' COMMENT '是否锁定',
+  `Admin_Permission` text NOT NULL COMMENT '权限'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='管理员表';
+
+CREATE TABLE `bs_php_admin_quickstat` (
+  `id` int(11) UNSIGNED NOT NULL COMMENT '自增ID',
+  `path` varchar(255) NOT NULL DEFAULT '' COMMENT '页面路径(含参数简化)',
+  `name` varchar(255) NOT NULL DEFAULT '' COMMENT '页面快捷名称',
+  `hit_count` int(11) UNSIGNED NOT NULL DEFAULT '0' COMMENT '访问次数',
+  `last_url` text COMMENT '最近一次完整URL',
+  `last_ip` varchar(64) NOT NULL DEFAULT '' COMMENT '最近访问IP',
+  `last_user` varchar(64) NOT NULL DEFAULT '' COMMENT '最近访问后台账号(可选)',
+  `last_time` datetime NOT NULL DEFAULT '2000-01-01 00:00:00' COMMENT '最近访问时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='后台页面快捷统计';
+
+CREATE TABLE `bs_php_admin_quickstat_pinned` (
+  `last_user` varchar(64) NOT NULL,
+  `path` varchar(512) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='后台快捷统计置顶';
+
+CREATE TABLE `bs_php_api_dbug` (
+  `id` int(11) NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `time` int(11) DEFAULT '0',
+  `user` varchar(255) DEFAULT '',
+  `api` varchar(255) DEFAULT '',
+  `ip` varchar(255) DEFAULT '',
+  `Sessl` varchar(255) DEFAULT '' COMMENT 'session',
+  `head_data` text COMMENT '协议头',
+  `get_data` text COMMENT 'get链接',
+  `post_data` text COMMENT 'post数据包',
+  `decrypt` varchar(255) DEFAULT '' COMMENT '解密类型',
+  `decrypt_data` text,
+  `error` text,
+  `print_fun` varchar(255) DEFAULT '' COMMENT '输出格式没',
+  `print_fun_data` text COMMENT '输出格式没加密',
+  `encryption` varchar(255) DEFAULT '' COMMENT '数据加密',
+  `encryption_data` text COMMENT '加密数据',
+  `print_html` text COMMENT '最近输出结果拦截，含错误',
+  `parameter` text COMMENT '接收数据包',
+  `parameter_type` int(11) DEFAULT '0' COMMENT '接收方式',
+  `in_sigm_key` varchar(255) DEFAULT '',
+  `in_sigm_txt` text,
+  `in_sigm_md5` varchar(255) DEFAULT '',
+  `to_sigm_key` varchar(255) DEFAULT '',
+  `to_sigm_txt` text,
+  `to_sigm_md5` varchar(255) DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='bsphp调试记录表！';
+
+CREATE TABLE `bs_php_appen_log` (
+  `log_id` int(11) NOT NULL COMMENT '日志ID',
+  `log_uid` char(25) NOT NULL COMMENT '用户UID',
+  `log_ip` char(255) NOT NULL COMMENT 'IP',
+  `log_date` datetime NOT NULL COMMENT '时间',
+  `log_md5` char(32) NOT NULL COMMENT 'MD5',
+  `log_api` char(50) NOT NULL COMMENT 'API',
+  `log_datd` text NOT NULL COMMENT '数据',
+  `log_daihao` int(8) NOT NULL COMMENT '软件代号',
+  `log_url_date` int(6) NOT NULL COMMENT 'URL日期',
+  `log_leix` char(100) NOT NULL COMMENT '类型',
+  `log_beizhu` char(200) NOT NULL COMMENT '备注',
+  `log_dengji` tinyint(1) NOT NULL COMMENT '等级'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='应用接口调用日志';
+
+CREATE TABLE `bs_php_appinfo` (
+  `app_daihao` int(8) NOT NULL COMMENT '软件代号',
+  `app_name` varchar(50) DEFAULT NULL COMMENT '软件名称',
+  `app_off` tinyint(1) DEFAULT '0' COMMENT '软件开关',
+  `app_off_name` varchar(180) DEFAULT NULL COMMENT '关闭提示',
+  `app_set` tinyint(1) DEFAULT '0' COMMENT '软件类型',
+  `app_set_date` varchar(50) DEFAULT NULL COMMENT '送时间',
+  `app_WEB_URL` varchar(300) DEFAULT NULL COMMENT 'web地址',
+  `app_URL` varchar(300) DEFAULT NULL COMMENT 'app地址',
+  `app_v` varchar(50) DEFAULT NULL COMMENT '版本号',
+  `app_key_zhong` tinyint(1) DEFAULT NULL COMMENT '是否可重绑定',
+  `app_gg` varchar(500) DEFAULT NULL COMMENT '公告',
+  `app_LogicA` tinyint(1) DEFAULT '0' COMMENT '逻辑提示A',
+  `app_LogicB` tinyint(1) DEFAULT '0' COMMENT '逻辑提示B',
+  `app_LogicinfoA` varchar(500) DEFAULT NULL COMMENT '逻辑提示A内容',
+  `app_LogicinfoB` varchar(500) DEFAULT NULL COMMENT '逻辑提示B内容',
+  `app_logininfo` text,
+  `app_md5` text,
+  `app_MoShi` varchar(100) NOT NULL COMMENT '模式',
+  `app_miaoshu` varchar(500) DEFAULT NULL COMMENT '软件描述',
+  `app_info` varchar(255) DEFAULT NULL COMMENT '软件信息',
+  `app_re_date` int(10) DEFAULT '0' COMMENT '注册送时间',
+  `app_zhuang_date` int(10) DEFAULT '0' COMMENT '转绑定扣时间',
+  `app_links` int(11) DEFAULT NULL,
+  `app_coode` text,
+  `app_chaoshi` int(11) DEFAULT NULL,
+  `app_pwd` varchar(32) DEFAULT NULL COMMENT '加密密码',
+  `app_get` int(1) DEFAULT NULL,
+  `app_breaking` int(1) DEFAULT NULL,
+  `app_links_chaoshi` int(11) DEFAULT '0',
+  `app_chargeset` int(1) DEFAULT NULL,
+  `app_links_open` int(11) DEFAULT NULL,
+  `app_point_open` int(1) DEFAULT NULL,
+  `app_api_pwd` varchar(255) DEFAULT NULL,
+  `app_api_dir` varchar(100) DEFAULT NULL,
+  `app_get_encryption` varchar(100) DEFAULT NULL,
+  `app_show_encryption` varchar(100) DEFAULT NULL,
+  `app_output` varchar(100) DEFAULT NULL,
+  `app_langs` varchar(100) NOT NULL COMMENT '语言',
+  `app_links_open_off` int(11) DEFAULT '0' COMMENT '账号到上限操作 0=提示 1=注销最早',
+  `app_links_off` int(11) DEFAULT '0' COMMENT '机器到上限操作 0=提示 1=注销最早',
+  `app_insgin` varchar(100) DEFAULT NULL,
+  `app_tosgin` varchar(100) DEFAULT NULL,
+  `app_sort` varchar(100) DEFAULT '',
+  `app_sale_kefu` text COMMENT '软件销售',
+  `app_sale_desc` text COMMENT '软件销售',
+  `app_sale_img` varchar(500) DEFAULT NULL COMMENT '软件销售',
+  `app_sale_title` varchar(255) DEFAULT NULL COMMENT '软件销售',
+  `app_server_pem` text COMMENT '服务器公钥',
+  `app_server_key` text COMMENT '服务器私钥',
+  `app_client_pem` text COMMENT '客户端公',
+  `app_client_key` text COMMENT '客户端私'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='软件信息表';
+
+CREATE TABLE `bs_php_app_custom_config` (
+  `id` int(11) NOT NULL,
+  `app_daihao` int(8) NOT NULL COMMENT '软件代号',
+  `field_key` varchar(80) NOT NULL COMMENT '字段key',
+  `field_type` varchar(20) NOT NULL DEFAULT 'input' COMMENT 'input/textarea/select/upload',
+  `field_val` text COMMENT '值',
+  `field_desc` varchar(255) DEFAULT NULL COMMENT '说明',
+  `field_options` longtext COMMENT 'select选项JSON',
+  `model_name` varchar(100) DEFAULT NULL COMMENT '类型名称',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `login_required` tinyint(1) NOT NULL DEFAULT '0' COMMENT '获取状态 0=无需登录 1=需登录 2=需要登陆和没过期',
+  `expire_allow` tinyint(1) NOT NULL DEFAULT '0' COMMENT '没到期可取 0=未到期才可取 1=过期也可取',
+  `sort_order` int(11) DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='自定义配置';
+
+CREATE TABLE `bs_php_cardseries` (
+  `car_id` int(11) NOT NULL COMMENT '卡ID',
+  `car_name` varchar(40) NOT NULL COMMENT '卡号',
+  `car_pwd` varchar(40) NOT NULL COMMENT '卡密',
+  `car_IsLock` tinyint(1) DEFAULT '0' COMMENT '是否锁定',
+  `car_DaiHao` int(10) NOT NULL COMMENT '软件代号',
+  `car_reDATE` datetime NOT NULL COMMENT '到期时间',
+  `car_TianShu` int(11) NOT NULL COMMENT '天数',
+  `car_Lei` varchar(60) DEFAULT '0' COMMENT '卡类',
+  `car_admin` varchar(1000) DEFAULT NULL COMMENT '管理员',
+  `car_BaoJi` tinyint(1) DEFAULT '0' COMMENT '暴击',
+  `car_JiFen` int(10) DEFAULT '0' COMMENT '积分',
+  `car_Rmb` float(9,2) DEFAULT '0.00' COMMENT '人民币',
+  `car_DaoLi_Rmb` float(9,2) DEFAULT '0.00' COMMENT '道理人民币',
+  `car_RuKu` tinyint(1) DEFAULT '0' COMMENT '入库',
+  `car_zhuangtai` tinyint(1) DEFAULT '0' COMMENT '状态',
+  `car_chong_uid` int(11) DEFAULT '0' COMMENT '充值用户UID',
+  `car_pur_date` datetime NOT NULL COMMENT '购买日期',
+  `car_cong_user` varchar(200) NOT NULL COMMENT '从属用户',
+  `car_type` int(1) NOT NULL COMMENT '类型',
+  `car_weight` int(11) NOT NULL COMMENT '权重',
+  `car_class` int(11) NOT NULL COMMENT '分类',
+  `car_for` int(11) NOT NULL COMMENT '用途',
+  `lei_for_id` int(11) NOT NULL COMMENT '卡类用途ID',
+  `car_for_oid` text NOT NULL COMMENT '用途订单',
+  `car_div` varchar(250) NOT NULL COMMENT '分成',
+  `car_money` float(9,2) NOT NULL COMMENT '金额',
+  `car_links_open` int(11) DEFAULT '0' COMMENT '账号登录数',
+  `car_links` int(11) DEFAULT '0' COMMENT '机器数量',
+  `car_admin_beizhu` varchar(100) DEFAULT NULL COMMENT '管理员备注',
+  `car_agnet_beizhu` varchar(100) DEFAULT NULL COMMENT '代理备注',
+  `car_buy_by` varchar(64) DEFAULT '' COMMENT '购买者标识(支付订单号/购买人)',
+  `car_sale_flag` tinyint(1) DEFAULT '0' COMMENT '0=正常卡 1=用销售现卡 2=已售出现卡'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='卡密系列表';
+
+CREATE TABLE `bs_php_kalei` (
+  `lei_id` int(11) NOT NULL COMMENT '卡类ID',
+  `lei_name` char(150) NOT NULL COMMENT '卡类名称',
+  `lei_date` int(5) NOT NULL COMMENT '天数',
+  `lei_jiage` float(9,2) NOT NULL COMMENT '价格',
+  `lei_daili` float(9,2) NOT NULL COMMENT '代理价',
+  `lei_daihao` int(8) NOT NULL COMMENT '软件代号',
+  `lei_ktzf` varchar(10) DEFAULT NULL COMMENT '开头字符',
+  `lei_type` int(1) DEFAULT NULL COMMENT '类型',
+  `lei_weight` int(11) NOT NULL COMMENT '权重',
+  `lei_class` int(11) NOT NULL COMMENT '分类',
+  `lei_cardint` int(11) NOT NULL COMMENT '卡号长度',
+  `lei_cardset` int(11) NOT NULL COMMENT '卡号设置',
+  `lei_pwdint` int(11) NOT NULL COMMENT '密码长度',
+  `lei_pwdset` int(11) NOT NULL COMMENT '密码设置',
+  `lei_for` int(11) NOT NULL COMMENT '用途',
+  `lei_for_id` int(11) NOT NULL COMMENT '用途ID',
+  `lei_for_oid` text NOT NULL COMMENT '用途订单',
+  `lei_money` float(9,2) NOT NULL COMMENT '金额',
+  `lei_links_open` int(11) DEFAULT '0' COMMENT '登录数',
+  `lei_links` int(11) DEFAULT '0' COMMENT '数量数量',
+  `lei_sort` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
+  `lei_img` varchar(500) DEFAULT NULL COMMENT '卡类图片'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='卡类表';
+
+CREATE TABLE `bs_php_kuka` (
+  `kuka_id` int(11) NOT NULL COMMENT '库存卡ID',
+  `kuka_uid` int(11) NOT NULL COMMENT '用户UID',
+  `kuka_daihao` int(11) NOT NULL COMMENT '软件代号',
+  `kuka_kalei` int(11) NOT NULL COMMENT '卡类ID',
+  `kuka_biaoji` varchar(32) NOT NULL COMMENT '标识 uid_daihao_kalei',
+  `kuka_val` int(11) NOT NULL COMMENT '数量',
+  `kuka_user` varchar(32) NOT NULL COMMENT '用户'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='库存卡';
+
+CREATE TABLE `bs_php_language` (
+  `lang_id` varchar(32) NOT NULL,
+  `time` bigint(15) NOT NULL DEFAULT '0',
+  `lang_0` varchar(1000) DEFAULT '' COMMENT '默认',
+  `lang_1` varchar(1000) DEFAULT '' COMMENT '自定一',
+  `lang_2` varchar(1000) DEFAULT '' COMMENT '自定二',
+  `lang_3` varchar(1000) DEFAULT '' COMMENT '粤语',
+  `lang_4` varchar(1000) DEFAULT '' COMMENT '繁体台湾',
+  `lang_5` varchar(1000) DEFAULT '' COMMENT '繁体香港',
+  `lang_6` varchar(1000) DEFAULT '' COMMENT '英语',
+  `lang_7` varchar(1000) DEFAULT '' COMMENT '俄语',
+  `lang_8` varchar(1000) DEFAULT '' COMMENT '日语',
+  `lang_9` varchar(1000) DEFAULT '' COMMENT '韩语',
+  `lang_10` varchar(1000) DEFAULT '' COMMENT '法语',
+  `lang_11` varchar(1000) DEFAULT '' COMMENT '德语',
+  `lang_12` varchar(1000) DEFAULT '' COMMENT '越南语',
+  `lang_13` varchar(1000) DEFAULT '',
+  `lang_14` varchar(1000) DEFAULT '',
+  `lang_15` varchar(1000) DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='全球语言库';
+
+CREATE TABLE `bs_php_links_session` (
+  `links_id` int(11) NOT NULL COMMENT '会话ID',
+  `links_session_id` varchar(255) NOT NULL COMMENT '会话标识',
+  `links_bs_set` varchar(20) NOT NULL COMMENT 'BS设置',
+  `links_user_id` int(11) NOT NULL COMMENT '用户ID',
+  `links_user_name` varchar(255) NOT NULL COMMENT '用户名',
+  `links_daihao` int(11) NOT NULL COMMENT '软件代号',
+  `links_key` varchar(255) NOT NULL COMMENT '密钥',
+  `links_biaoji` varchar(255) NOT NULL COMMENT '标识',
+  `links_session` varchar(255) NOT NULL COMMENT '会话',
+  `links_add_time` bigint(13) NOT NULL COMMENT '添加时间',
+  `links_out_time` bigint(13) NOT NULL COMMENT '过期时间',
+  `links_addip` varchar(255) NOT NULL COMMENT '添加IP',
+  `links_chaoshi` int(11) NOT NULL COMMENT '超时',
+  `links_data` varchar(3000) NOT NULL COMMENT '数据',
+  `links_set` int(11) NOT NULL COMMENT '设置'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='多端登录会话表' ROW_FORMAT=DYNAMIC;
+
+CREATE TABLE `bs_php_log` (
+  `id` int(11) NOT NULL COMMENT 'ID',
+  `leixing` varchar(50) NOT NULL COMMENT '日志类型',
+  `date` int(11) NOT NULL COMMENT '时间戳',
+  `ip` varchar(255) NOT NULL COMMENT 'IP',
+  `test` text NOT NULL COMMENT '内容',
+  `user` varchar(20) NOT NULL COMMENT '用户'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='系统日志表';
+
+CREATE TABLE `bs_php_moshi` (
+  `S_Name` varchar(150) NOT NULL COMMENT '名称',
+  `S_MoShi` int(4) NOT NULL COMMENT '模式',
+  `S_MoShiInfo` varchar(500) NOT NULL COMMENT '模式说明',
+  `S_APIinfo` varchar(10) NOT NULL COMMENT 'API信息',
+  `s_zhi` varchar(10) NOT NULL COMMENT '值'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='模式表';
+
+CREATE TABLE `bs_php_news` (
+  `news_id` int(11) NOT NULL COMMENT '自动ID',
+  `news_table` varchar(200) NOT NULL COMMENT '标题',
+  `news_test` text NOT NULL COMMENT '内容',
+  `news_class` int(8) NOT NULL COMMENT '分类id',
+  `news_daihao` int(8) NOT NULL DEFAULT '0' COMMENT '所属软件代号，0表示不关联',
+  `news_unix` int(11) NOT NULL COMMENT 'UNIX时间'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE `bs_php_news_class` (
+  `class_id` int(11) NOT NULL COMMENT '文章分类ID',
+  `class_name` varchar(50) NOT NULL COMMENT '文章分类名称'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文章分类表';
+
+CREATE TABLE `bs_php_pattern_login` (
+  `L_id` int(11) NOT NULL COMMENT 'ID',
+  `L_User_uid` char(150) NOT NULL COMMENT '用户UID',
+  `L_daihao` int(8) NOT NULL COMMENT '软件代号',
+  `L_re_date` datetime NOT NULL COMMENT '注册时间',
+  `L_vip_date` datetime NOT NULL COMMENT 'VIP到期时间',
+  `L_IsLock` tinyint(1) DEFAULT '0' COMMENT '1锁定',
+  `L_key_info` varchar(500) DEFAULT NULL COMMENT '绑定特征',
+  `L_links_info` text COMMENT '用户信息',
+  `L_login_time` datetime DEFAULT NULL COMMENT '登陆时间',
+  `L_class` int(1) NOT NULL COMMENT '所属分组',
+  `L_timing` int(11) NOT NULL COMMENT '时长',
+  `L_vip_unix` bigint(16) NOT NULL COMMENT 'VIP到期时间戳',
+  `L_ic_name` varchar(150) DEFAULT NULL COMMENT '卡模式卡号',
+  `L_ic_pwd` varchar(150) DEFAULT NULL COMMENT '卡模式密码',
+  `L_ic_info` int(11) NOT NULL COMMENT '卡信息',
+  `L_login_ip` varchar(255) NOT NULL,
+  `L_re_ip` varchar(255) NOT NULL,
+  `L_login_run` int(11) NOT NULL COMMENT '登录次数',
+  `L_links_open` int(11) DEFAULT '0' COMMENT '账号登录数',
+  `L_links` int(11) DEFAULT '0' COMMENT '机器登录量',
+  `L_links_open_off` int(11) DEFAULT '0' COMMENT '上限关闭模式0=直接提示 1=关闭最早的',
+  `L_beizhu` varchar(255) DEFAULT NULL COMMENT '用户备注'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='卡密/账号模式登录表';
+
+CREATE TABLE `bs_php_paydata` (
+  `pay_id` int(11) NOT NULL COMMENT '支付ID',
+  `pay_date` double NOT NULL COMMENT '支付时间',
+  `pay_uid` varchar(100) NOT NULL COMMENT '用户UID',
+  `pay_rmb` float(9,2) NOT NULL COMMENT '支付金额',
+  `pay_uid_rbm` float(9,2) NOT NULL COMMENT '用户余额',
+  `pay_uid_rmb2` float(9,2) NOT NULL COMMENT '用户余额2',
+  `pay_fanshi` varchar(10) NOT NULL COMMENT '支付方式',
+  `pay_zhuangtai` tinyint(1) NOT NULL COMMENT '支付状态'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='支付数据表';
+
+CREATE TABLE `bs_php_pay_log` (
+  `pay_id` varchar(32) NOT NULL COMMENT '支付订单号',
+  `ali_id` int(11) NOT NULL COMMENT '自增ID',
+  `pay_uid` char(15) NOT NULL COMMENT '用户UID',
+  `pay_date` datetime NOT NULL COMMENT '支付时间',
+  `pay_qian_rmb` float(9,2) NOT NULL COMMENT '支付前余额',
+  `pay_rmb` float(9,2) NOT NULL COMMENT '支付金额',
+  `pay_ka_shuliang` int(11) NOT NULL COMMENT '卡数量',
+  `pay_zhuangtai` tinyint(1) NOT NULL COMMENT '状态',
+  `ka_shijia` float(9,2) NOT NULL COMMENT '卡市价',
+  `ka_zhe_jia` float(9,2) NOT NULL COMMENT '卡折后价',
+  `ali_ka_name` char(255) NOT NULL COMMENT '卡类名称',
+  `ali_ka_jiage` float(9,2) NOT NULL COMMENT '卡价格',
+  `ali_ka_zhe` float(2,1) NOT NULL COMMENT '卡折扣',
+  `ali_ka_date` int(11) NOT NULL COMMENT '卡天数',
+  `pay_daihao` int(8) NOT NULL COMMENT '软件代号',
+  `pay_app_name` varchar(50) DEFAULT NULL COMMENT '软件名称',
+  `pay_type` int(1) NOT NULL COMMENT '支付类型',
+  `pay_yao_uid` int(11) NOT NULL DEFAULT '0' COMMENT '推荐人UID(0=无)',
+  `pay_remark` varchar(100) NOT NULL DEFAULT '' COMMENT '备注(如:人工手动完成购卡订单)'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='购卡支付日志';
+
+CREATE TABLE `bs_php_rmb_pay_log` (
+  `id` int(11) NOT NULL COMMENT 'ID',
+  `pay_id` varchar(32) NOT NULL COMMENT '支付订单号',
+  `pay_uid` int(11) NOT NULL COMMENT '用户UID',
+  `pay_lei` varchar(50) NOT NULL COMMENT '支付类型',
+  `pay_rbm` float(9,2) NOT NULL COMMENT '支付金额',
+  `pay_zhuangtai` tinyint(1) NOT NULL COMMENT '状态',
+  `pay_info1` varchar(32) DEFAULT NULL COMMENT '扩展信息1',
+  `pay_info2` varchar(32) DEFAULT NULL COMMENT '扩展信息2',
+  `pay_date` datetime NOT NULL COMMENT '支付时间'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='人民币支付日志';
+
+CREATE TABLE `bs_php_sysconfig` (
+  `sys_ini` varchar(32) NOT NULL COMMENT '配置键',
+  `sys_val` varchar(2000) DEFAULT NULL COMMENT '配置值'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='数据配置';
+
+CREATE TABLE `bs_php_user` (
+  `user_uid` int(11) NOT NULL COMMENT '用户UID',
+  `user_user` varchar(50) NOT NULL COMMENT '用户名',
+  `user_pwd` varchar(32) NOT NULL COMMENT '密码',
+  `user_IsLock` tinyint(1) DEFAULT '0' COMMENT '是否锁定',
+  `user_email` varchar(45) DEFAULT NULL COMMENT '邮箱',
+  `user_mail_ok` tinyint(1) DEFAULT '0' COMMENT '邮箱验证',
+  `user_qq` varchar(15) DEFAULT NULL COMMENT 'QQ',
+  `user_Mobile` varchar(11) DEFAULT NULL COMMENT '手机',
+  `user_mibao_wenti` char(20) DEFAULT NULL COMMENT '密保问题',
+  `user_mibao_daan` char(20) DEFAULT NULL COMMENT '密保答案',
+  `user_rmb` float(9,2) DEFAULT '0.00' COMMENT '余额',
+  `user_jifen` int(11) DEFAULT '0' COMMENT '积分',
+  `user_re_ip` varchar(255) DEFAULT '' COMMENT '注册IP',
+  `user_re_date` datetime DEFAULT NULL COMMENT '注册时间',
+  `user_Login_ip` char(255) DEFAULT '' COMMENT '登录IP',
+  `user_Login_date` datetime DEFAULT NULL COMMENT '登录时间',
+  `user_CaoShi` int(11) DEFAULT '0' COMMENT '操作次数',
+  `user_yao_User` char(150) DEFAULT NULL COMMENT '邀请人',
+  `user_yao_Shu` int(10) DEFAULT '0' COMMENT '邀请数',
+  `user_Zhe` float(9,1) DEFAULT '0.0' COMMENT '折扣',
+  `user_LoGinNum` int(11) DEFAULT '0' COMMENT '登录次数',
+  `user_DenJi_tmp` int(11) DEFAULT '0' COMMENT '等级临时',
+  `user_DenJi` int(11) DEFAULT '0' COMMENT '等级',
+  `user_daili` tinyint(1) DEFAULT '0' COMMENT '是否代理',
+  `user_is_pwd` int(11) DEFAULT '0' COMMENT '是否禁止修改密码',
+  `user_beizhu` varchar(200) DEFAULT NULL COMMENT '用户备注',
+  `user_anget_carid` varchar(255) DEFAULT NULL COMMENT '代理卡串',
+  `user_anget_beizhu` varchar(255) DEFAULT NULL COMMENT '代理商备注'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+CREATE TABLE `bs_php_userclass` (
+  `class_id` int(11) NOT NULL COMMENT '分组ID',
+  `class_name` varchar(255) NOT NULL COMMENT '分组名称',
+  `calss_mark` varchar(255) NOT NULL COMMENT '分组标识',
+  `class_daihao` int(11) NOT NULL COMMENT '软件代号'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户分组表';
+
+CREATE TABLE `bs_php_user_rmb_log` (
+  `id` int(11) NOT NULL,
+  `log_uid` int(11) NOT NULL DEFAULT '0' COMMENT '用户UID',
+  `log_user` varchar(50) NOT NULL DEFAULT '' COMMENT '用户账号',
+  `log_before` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '变动前余额',
+  `log_after` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '变动后余额',
+  `log_delta` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '变动金额(正=增加 负=减少)',
+  `log_reason` varchar(255) NOT NULL DEFAULT '' COMMENT '变动原因',
+  `log_order` varchar(64) NOT NULL DEFAULT '' COMMENT '关联订单号等',
+  `log_date` int(11) NOT NULL DEFAULT '0' COMMENT '时间戳',
+  `log_ip` varchar(64) NOT NULL DEFAULT '' COMMENT 'IP'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户余额变动日志';
+
+CREATE TABLE `bs_php_yao_money_log` (
+  `id` int(11) NOT NULL,
+  `log_user` varchar(50) NOT NULL DEFAULT '' COMMENT '获得佣金的用户账号',
+  `log_desc` varchar(500) NOT NULL DEFAULT '' COMMENT '描述',
+  `log_amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '分成金额',
+  `log_level` char(1) NOT NULL DEFAULT '' COMMENT '级别 A/B/C',
+  `log_consumer_uid` int(11) NOT NULL DEFAULT '0' COMMENT '消费用户UID',
+  `log_order` varchar(64) NOT NULL DEFAULT '' COMMENT '分成订单号(关联支付订单,便于退款)',
+  `log_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0=待审核 1=分成完毕 2=退款订单',
+  `log_remark` varchar(255) NOT NULL DEFAULT '' COMMENT '备注',
+  `log_date` int(11) NOT NULL DEFAULT '0' COMMENT '时间戳',
+  `log_ip` varchar(255) NOT NULL DEFAULT '' COMMENT 'IP'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='佣金提成日志';
+
+CREATE TABLE `bs_php_yao_registration_log` (
+  `id` int(11) NOT NULL,
+  `log_user` varchar(50) NOT NULL DEFAULT '' COMMENT '邀请人账号',
+  `log_beinvited` varchar(100) NOT NULL DEFAULT '' COMMENT '被邀请人账号',
+  `log_desc` varchar(500) NOT NULL DEFAULT '' COMMENT '描述',
+  `log_jifen` int(11) NOT NULL DEFAULT '0' COMMENT '获得积分',
+  `log_date` int(11) NOT NULL DEFAULT '0' COMMENT '时间戳',
+  `log_ip` varchar(255) NOT NULL DEFAULT '' COMMENT 'IP'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='邀请推广日志';
+
+
+ALTER TABLE `bs_php_add`
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `add_daihao` (`add_daihao`),
+  ADD KEY `add_uid` (`add_uid`);
+
+ALTER TABLE `bs_php_admin`
+  ADD PRIMARY KEY (`Admin_ID`),
+  ADD UNIQUE KEY `Admin_AdminUserName` (`Admin_AdminUserName`),
+  ADD KEY `Admin_AdminPassWord` (`Admin_AdminPassWord`);
+
+ALTER TABLE `bs_php_admin_quickstat`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uniq_path_name` (`path`(128),`name`(63)),
+  ADD KEY `idx_last_user_time` (`last_user`(32),`last_time`);
+
+ALTER TABLE `bs_php_admin_quickstat_pinned`
+  ADD PRIMARY KEY (`last_user`,`path`(191));
+
+ALTER TABLE `bs_php_api_dbug`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uuid_2` (`uuid`),
+  ADD KEY `uuid` (`uuid`);
+
+ALTER TABLE `bs_php_appen_log`
+  ADD UNIQUE KEY `log_id` (`log_id`),
+  ADD KEY `log_uid` (`log_uid`);
+
+ALTER TABLE `bs_php_appinfo`
+  ADD PRIMARY KEY (`app_daihao`),
+  ADD UNIQUE KEY `app_daihao` (`app_daihao`),
+  ADD KEY `app_MoShi` (`app_MoShi`);
+
+ALTER TABLE `bs_php_app_custom_config`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uk_app_field` (`app_daihao`,`field_key`),
+  ADD KEY `app_daihao` (`app_daihao`),
+  ADD KEY `idx_app_sort` (`app_daihao`,`sort_order`);
+
+ALTER TABLE `bs_php_cardseries`
+  ADD PRIMARY KEY (`car_id`),
+  ADD KEY `car_agnet_beizhu` (`car_agnet_beizhu`),
+  ADD KEY `car_admin_beizhu` (`car_admin_beizhu`),
+  ADD KEY `car_name` (`car_name`),
+  ADD KEY `car_IsLock` (`car_IsLock`),
+  ADD KEY `car_DaiHao` (`car_DaiHao`),
+  ADD KEY `car_TianShu` (`car_TianShu`),
+  ADD KEY `car_zhuangtai` (`car_zhuangtai`),
+  ADD KEY `car_type` (`car_type`),
+  ADD KEY `lei_for_id` (`lei_for_id`),
+  ADD KEY `car_class` (`car_class`),
+  ADD KEY `car_sale_flag` (`car_sale_flag`),
+  ADD KEY `car_buy_by` (`car_buy_by`(32)),
+  ADD KEY `idx_car_reDATE` (`car_reDATE`),
+  ADD KEY `idx_car_DaiHao_reDATE` (`car_DaiHao`,`car_reDATE`),
+  ADD KEY `idx_car_DaiHao_Lei_sale` (`car_DaiHao`,`car_Lei`,`car_sale_flag`);
+
+ALTER TABLE `bs_php_kalei`
+  ADD UNIQUE KEY `lei_id` (`lei_id`),
+  ADD KEY `lei_class` (`lei_class`),
+  ADD KEY `lei_name` (`lei_name`),
+  ADD KEY `lei_jiage` (`lei_jiage`),
+  ADD KEY `lei_daihao` (`lei_daihao`);
+
+ALTER TABLE `bs_php_kuka`
+  ADD PRIMARY KEY (`kuka_id`),
+  ADD KEY `kuka_daihao` (`kuka_daihao`),
+  ADD KEY `kuka_biaoji` (`kuka_biaoji`),
+  ADD KEY `kuka_kalei` (`kuka_kalei`),
+  ADD KEY `kuka_uid` (`kuka_uid`),
+  ADD KEY `kuka_kalei_2` (`kuka_kalei`);
+
+ALTER TABLE `bs_php_language`
+  ADD PRIMARY KEY (`lang_id`),
+  ADD KEY `lang_0` (`lang_0`),
+  ADD KEY `idx_time` (`time`);
+
+ALTER TABLE `bs_php_links_session`
+  ADD PRIMARY KEY (`links_id`),
+  ADD KEY `links_out_time` (`links_out_time`),
+  ADD KEY `links_id` (`links_id`),
+  ADD KEY `links_set` (`links_set`),
+  ADD KEY `links_biaoji` (`links_biaoji`),
+  ADD KEY `links_daihao` (`links_daihao`),
+  ADD KEY `links_user_name` (`links_user_name`),
+  ADD KEY `links_user_id` (`links_user_id`),
+  ADD KEY `links_bs_set` (`links_bs_set`),
+  ADD KEY `links_session_id` (`links_session_id`),
+  ADD KEY `idx_links_session` (`links_session`(64)),
+  ADD KEY `idx_links_user_daihao_set` (`links_user_name`(64),`links_daihao`,`links_set`),
+  ADD KEY `idx_links_userid_daihao` (`links_user_id`,`links_daihao`),
+  ADD KEY `idx_links_out_set` (`links_out_time`,`links_set`);
+
+ALTER TABLE `bs_php_log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `leixing` (`leixing`),
+  ADD KEY `user` (`user`),
+  ADD KEY `ip` (`ip`),
+  ADD KEY `date` (`date`);
+
+ALTER TABLE `bs_php_moshi`
+  ADD UNIQUE KEY `S_MoShi` (`S_MoShi`);
+
+ALTER TABLE `bs_php_news`
+  ADD UNIQUE KEY `news_id` (`news_id`),
+  ADD KEY `news_table` (`news_table`),
+  ADD KEY `news_unix` (`news_unix`),
+  ADD KEY `news_class` (`news_class`),
+  ADD KEY `news_daihao` (`news_daihao`),
+  ADD KEY `idx_news_daihao_id` (`news_daihao`,`news_id`);
+
+ALTER TABLE `bs_php_news_class`
+  ADD UNIQUE KEY `class_id` (`class_id`);
+
+ALTER TABLE `bs_php_pattern_login`
+  ADD PRIMARY KEY (`L_id`),
+  ADD KEY `L_User_uid` (`L_User_uid`),
+  ADD KEY `L_daihao` (`L_daihao`),
+  ADD KEY `L_re_date` (`L_re_date`),
+  ADD KEY `L_IsLock` (`L_IsLock`),
+  ADD KEY `L_key_info` (`L_key_info`(333)),
+  ADD KEY `L_login_time` (`L_login_time`),
+  ADD KEY `L_class` (`L_class`),
+  ADD KEY `L_vip_unix` (`L_vip_unix`),
+  ADD KEY `L_ic_name` (`L_ic_name`),
+  ADD KEY `L_login_ip` (`L_login_ip`),
+  ADD KEY `L_re_ip` (`L_re_ip`),
+  ADD KEY `L_beizhu` (`L_beizhu`),
+  ADD KEY `idx_L_daihao_User_uid` (`L_daihao`,`L_User_uid`(64)),
+  ADD KEY `idx_L_daihao_key_info` (`L_daihao`,`L_key_info`(64)),
+  ADD KEY `idx_L_vip_unix` (`L_vip_unix`);
+
+ALTER TABLE `bs_php_paydata`
+  ADD PRIMARY KEY (`pay_id`),
+  ADD KEY `pay_uid` (`pay_uid`),
+  ADD KEY `pay_zhuangtai` (`pay_zhuangtai`);
+
+ALTER TABLE `bs_php_pay_log`
+  ADD PRIMARY KEY (`ali_id`),
+  ADD KEY `pay_uid` (`pay_uid`),
+  ADD KEY `pay_type` (`pay_type`),
+  ADD KEY `pay_yao_uid` (`pay_yao_uid`),
+  ADD KEY `idx_pay_id` (`pay_id`),
+  ADD KEY `idx_pay_id_daihao` (`pay_id`,`pay_daihao`);
+
+ALTER TABLE `bs_php_rmb_pay_log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_pay_id` (`pay_id`);
+
+ALTER TABLE `bs_php_sysconfig`
+  ADD PRIMARY KEY (`sys_ini`),
+  ADD KEY `sys_ini` (`sys_ini`);
+
+ALTER TABLE `bs_php_user`
+  ADD PRIMARY KEY (`user_uid`),
+  ADD UNIQUE KEY `user_user` (`user_user`),
+  ADD KEY `user_IsLock` (`user_IsLock`),
+  ADD KEY `user_mail_ok` (`user_mail_ok`),
+  ADD KEY `user_anget_beizhu` (`user_anget_beizhu`),
+  ADD KEY `user_anget_carid` (`user_anget_carid`),
+  ADD KEY `user_beizhu` (`user_beizhu`),
+  ADD KEY `user_daili` (`user_daili`),
+  ADD KEY `user_LoGinNum` (`user_LoGinNum`),
+  ADD KEY `user_Login_date` (`user_Login_date`),
+  ADD KEY `user_Login_ip` (`user_Login_ip`),
+  ADD KEY `user_re_date` (`user_re_date`),
+  ADD KEY `user_re_ip` (`user_re_ip`),
+  ADD KEY `user_rmb` (`user_rmb`),
+  ADD KEY `user_mibao_wenti` (`user_mibao_wenti`),
+  ADD KEY `user_Mobile` (`user_Mobile`),
+  ADD KEY `user_qq` (`user_qq`),
+  ADD KEY `user_email` (`user_email`),
+  ADD KEY `user_pwd` (`user_pwd`);
+
+ALTER TABLE `bs_php_userclass`
+  ADD UNIQUE KEY `class_id` (`class_id`),
+  ADD KEY `class_daihao` (`class_daihao`),
+  ADD KEY `class_id_2` (`class_id`),
+  ADD KEY `calss_mark` (`calss_mark`);
+
+ALTER TABLE `bs_php_user_rmb_log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `log_uid` (`log_uid`),
+  ADD KEY `log_user` (`log_user`),
+  ADD KEY `log_date` (`log_date`);
+
+ALTER TABLE `bs_php_yao_money_log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `log_user` (`log_user`),
+  ADD KEY `log_date` (`log_date`),
+  ADD KEY `log_amount` (`log_amount`),
+  ADD KEY `log_status` (`log_status`),
+  ADD KEY `log_order` (`log_order`(32));
+
+ALTER TABLE `bs_php_yao_registration_log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `log_user` (`log_user`),
+  ADD KEY `log_date` (`log_date`);
+
+
+ALTER TABLE `bs_php_add`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID';
+
+ALTER TABLE `bs_php_admin`
+  MODIFY `Admin_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '管理员ID';
+
+ALTER TABLE `bs_php_admin_quickstat`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自增ID';
+
+ALTER TABLE `bs_php_api_dbug`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `bs_php_appen_log`
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '日志ID';
+
+ALTER TABLE `bs_php_app_custom_config`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `bs_php_cardseries`
+  MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '卡ID';
+
+ALTER TABLE `bs_php_kalei`
+  MODIFY `lei_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '卡类ID';
+
+ALTER TABLE `bs_php_kuka`
+  MODIFY `kuka_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '库存卡ID';
+
+ALTER TABLE `bs_php_links_session`
+  MODIFY `links_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '会话ID';
+
+ALTER TABLE `bs_php_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+
+ALTER TABLE `bs_php_news`
+  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自动ID';
+
+ALTER TABLE `bs_php_pattern_login`
+  MODIFY `L_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+
+ALTER TABLE `bs_php_pay_log`
+  MODIFY `ali_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增ID';
+
+ALTER TABLE `bs_php_rmb_pay_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+
+ALTER TABLE `bs_php_user`
+  MODIFY `user_uid` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户UID';
+
+ALTER TABLE `bs_php_userclass`
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '分组ID';
+
+ALTER TABLE `bs_php_user_rmb_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `bs_php_yao_money_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `bs_php_yao_registration_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

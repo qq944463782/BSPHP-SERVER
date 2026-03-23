@@ -1,0 +1,365 @@
+:root {
+    --bsphp-primary: #1b84ed;
+    --bsphp-bg: #f5f7fb;
+    --bsphp-text: #374151;
+    --bsphp-title: #111827;
+    --bsphp-border: rgba(15, 23, 42, .10);
+    --bsphp-border-soft: rgba(15, 23, 42, .06);
+    --bsphp-radius: 12px;
+    --bsphp-radius-sm: 8px;
+    --bsphp-shadow: 0 10px 30px rgba(15, 23, 42, .08);
+    --bsphp-success: #10b981;
+    --bsphp-warning: #f59e0b;
+    --bsphp-error: #ef4444;
+    --space-1: 8px;
+    --space-2: 12px;
+    --space-3: 16px;
+    --space-4: 24px;
+}
+
+html {
+    background-color: var(--bsphp-bg);
+    color: var(--bsphp-text);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, "PingFang SC", "Microsoft YaHei", "Noto Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.layui-card {
+    border-radius: var(--bsphp-radius);
+    border-color: var(--bsphp-border-soft);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, .06);
+    overflow: hidden;
+}
+
+.layui-card-header {
+    color: var(--bsphp-title);
+    font-weight: 600;
+    border-bottom-color: var(--bsphp-border-soft);
+    letter-spacing: .2px;
+    padding: var(--space-3) var(--space-4);
+}
+
+.layui-card-body {
+    color: var(--bsphp-text);
+}
+
+.layui-btn {
+    border-radius: var(--bsphp-radius-sm);
+    font-weight: 600;
+}
+
+.layui-btn-primary {
+    border-color: var(--bsphp-border);
+}
+
+.layui-btn-primary:hover {
+    border-color: var(--bsphp-primary);
+    color: var(--bsphp-primary);
+}
+
+.layui-input,
+.layui-textarea,
+.layui-select {
+    border-radius: var(--bsphp-radius-sm);
+}
+
+.layui-input,
+.layui-textarea {
+    border-color: var(--bsphp-border);
+}
+
+.layui-input:focus,
+.layui-textarea:focus {
+    border-color: var(--bsphp-primary) !important;
+    box-shadow: 0 0 0 3px rgba(27, 132, 237, .12);
+}
+
+/* 表单下拉框(dl 带 layui-anim-upbit)层级高于侧栏/顶栏，避免被遮挡 */
+.layui-form-select dl,
+.layui-form-selected dl {
+    z-index: 19889999 !important;
+    border-radius: var(--bsphp-radius);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, .14);
+    border-color: var(--bsphp-border-soft);
+}
+
+.layui-form-select dl dd.layui-this {
+    background-color: rgba(27, 132, 237, .12);
+    color: var(--bsphp-primary);
+}
+
+.layui-table-view {
+    border-radius: var(--bsphp-radius);
+    overflow: hidden;
+    border-color: var(--bsphp-border-soft);
+}
+
+.layui-table thead tr {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: var(--bsphp-title);
+}
+
+.layui-table td,
+.layui-table th {
+    border-color: var(--bsphp-border-soft);
+}
+
+.layui-table-hover tbody tr:hover {
+    background-color: rgba(27, 132, 237, .04);
+}
+
+.layui-table tbody tr:nth-child(odd) {
+    background-color: rgba(15, 23, 42, .015);
+}
+
+/* 弹出框/动画层(含 layui-anim-upbit)层级高于后台侧栏(1001)、顶栏(1002)，避免被遮挡 */
+.layui-layer,
+.layui-layer-shade,
+.layui-anim.layui-anim-upbit {
+    z-index: 19890000 !important;
+}
+.layui-layer {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.layui-layer-title {
+    color: var(--bsphp-title);
+    font-weight: 600;
+    background: #fff;
+    border-bottom-color: var(--bsphp-border-soft);
+}
+
+/* .layui-layer-content {
+    color: var(--bsphp-text);
+} */
+
+.layui-laypage a,
+.layui-laypage span {
+    border-radius: 10px;
+    height: 34px;
+    line-height: 34px;
+    margin-right: 6px;
+}
+
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+    background-color: var(--bsphp-primary);
+}
+
+.layui-elem-quote {
+    border-left-color: rgba(27, 132, 237, .35);
+    background-color: #f8fafc;
+    border-radius: 0 10px 10px 0;
+}
+
+.layui-badge {
+    font-weight: 600;
+}
+
+.layui-badge-rim {
+    border-color: var(--bsphp-border);
+}
+
+.layui-badge-dot {
+    width: 8px;
+    height: 8px;
+}
+
+.layui-badge-success {
+    background-color: var(--bsphp-success);
+}
+
+.layui-badge-warn {
+    background-color: var(--bsphp-warning);
+}
+
+.layui-badge-error {
+    background-color: var(--bsphp-error);
+}
+
+.layui-form-radio>i,
+.layui-form-checkbox>span {
+    font-weight: 500;
+}
+
+.layui-form-switch {
+    border-radius: 999px;
+}
+
+/* 侧边导航细节 */
+.layui-side-menu .layui-nav {
+    padding: 8px 6px;
+}
+
+.layui-side-menu .layui-nav .layui-nav-item>a {
+    height: 42px;
+    line-height: 42px;
+    padding: 0 16px 0 18px;
+    border-radius: var(--bsphp-radius-sm);
+    color: var(--bsphp-text);
+    transition: color .2s, background-color .2s, box-shadow .2s, border-color .2s;
+}
+
+.layui-side-menu .layui-nav .layui-nav-item>a:hover {
+    background-color: rgba(27, 132, 237, .08);
+    color: var(--bsphp-primary);
+}
+
+.layui-nav-itemed>.layui-nav-child {
+    background-color: rgba(0,0,0,.03) !important;
+    border-radius: var(--bsphp-radius-sm);
+    margin: 4px 0 8px 0;
+}
+
+.layui-nav-tree .layui-this>a,
+.layui-nav-tree .layui-this>a:hover,
+.layui-nav-tree .layui-nav-child dd.layui-this,
+.layui-nav-tree .layui-nav-child dd.layui-this a {
+    background-color: rgba(27, 132, 237, .12) !important;
+    color: var(--bsphp-primary) !important;
+}
+
+.layui-nav-tree .layui-nav-bar {
+    background-color: var(--bsphp-primary) !important;
+    width: 3px;
+    border-radius: 2px;
+}
+
+.layui-side-menu .layui-nav .layui-nav-item>a .layui-icon {
+    font-size: 18px;
+    margin-right: 8px;
+    color: var(--bsphp-text);
+}
+
+/* 顶部导航与页签 */
+.layui-layout-admin .layui-header .layui-nav .layui-this:after,
+.layui-layout-admin .layui-header .layui-nav-bar {
+    height: 3px;
+    background-color: var(--bsphp-primary) !important;
+    border-radius: 3px;
+}
+
+.layadmin-pagetabs .layui-tab-title {
+    padding: 0 10px;
+    border-bottom: 1px solid var(--bsphp-border-soft);
+    background-color: #fff;
+}
+
+.layadmin-pagetabs .layui-tab-title li {
+    padding: 0 16px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.layadmin-pagetabs .layui-tab-title li.layui-this {
+    color: var(--bsphp-primary);
+}
+
+.layadmin-pagetabs .layui-tab-title li.layui-this:after {
+    height: 3px;
+    border: none;
+    background-color: var(--bsphp-primary);
+}
+
+/* 面包屑与按钮间距 */
+.layui-breadcrumb a {
+    color: var(--bsphp-text);
+}
+.layui-breadcrumb a:hover {
+    color: var(--bsphp-primary);
+}
+
+.layui-btn + .layui-btn {
+    margin-left: 8px;
+}
+
+/* 表单与输入细节 */
+.layui-form-item {
+    margin-bottom: 16px;
+}
+.layui-form-label {
+    color: var(--bsphp-title);
+    font-weight: 600;
+}
+.layui-input,
+.layui-textarea,
+.layui-select {
+    transition: border-color .2s, box-shadow .2s;
+}
+.layui-input::-webkit-input-placeholder,
+.layui-textarea::-webkit-input-placeholder {
+    color: #9aa4b2;
+}
+
+/* 徽章与标签 */
+.layui-badge,
+.layui-badge-dot,
+.layui-tag {
+    border-radius: 10px;
+}
+
+/* 表格工具条与交互 */
+.layui-table-tool {
+    border-color: var(--bsphp-border-soft);
+}
+.layui-table-hover tbody tr:hover {
+    background-color: rgba(27, 132, 237, .04);
+}
+
+/* 统一过渡曲线 */
+a, button, .layui-nav, .layui-btn {
+    transition: color .2s ease, background-color .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+
+
+.layui-card-header.layuiadmin-card-header-auto .layui-form-item .layui-form-label{
+   width: auto;
+}
+
+
+.layui-card-header.layuiadmin-card-header-auto .layui-form-item .layui-input-block{
+    width: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.layui-card-header.layuiadmin-card-header-auto .layui-form-item,.layui-card-header.layuiadmin-card-header-auto .layui-form-inline{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+}
+.layui-btn-primary {
+    background-color: rgb(255, 255, 255) !important;
+    color: rgb(85, 85, 85);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(201, 201, 201);
+    border-image: initial;
+}
+
+
+#foot {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 12px;
+    padding: 18px 0 6px;
+}
+
+#foot a {
+    color: #3b82f6;
+}
+
+/* 卡统计相关页面最低高度（carinfo / carinfob / rootcarinfo / rootcarinfoall / rootcarinfoall_user）
+   只作用于这些页面里的 layui-card-body */
+.bsphp-stats-page-min-height .layui-card-body {
+    min-height: 70vh;
+}

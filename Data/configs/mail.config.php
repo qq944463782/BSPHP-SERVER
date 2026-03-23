@@ -1,0 +1,1 @@
+<?php return array('set'=>'1','smtp_host'=>'smtpdm.aliyun.com','port'=>'465','send_show_mail'=>'bsphp@send.bsphp.net','send_mail_user'=>'bsphp@send.bsphp.net','send_mail_user_pwd'=>'Kd8mR3xY92wQ','appenconfig'=>'1','send_mail_text'=>'',); ?>

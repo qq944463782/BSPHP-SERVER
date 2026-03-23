@@ -1,0 +1,1 @@
+<?php return array('pay_config'=>'','pay_apipay_set'=>'1','pay_apipay_key'=>'','pay_apipay_url'=>'','pay_apipay_key1'=>'','pay_apipay_key2'=>'','pay_apipay_key3'=>'','pay_apipay_key4'=>'','pay_apipay_key5'=>'','pay_apipay_key6'=>'','pay_apipay_key7'=>'','pay_apipay_key8'=>'','pay_post_config'=>'','config'=>'tenpay',); ?>

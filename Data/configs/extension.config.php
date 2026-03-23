@@ -1,0 +1,1 @@
+<?php return array('yaoqing_off'=>'1','yaoqing_jifen'=>'12','yaoqing_today_RenShu'=>'11','you_weizi'=>'0','ticheng_oof'=>'1','ticheng_baifenbi_1'=>'5','ticheng_baifenbi_2'=>'1','ticheng_baifenbi_3'=>'3','ticheng_baifenbi_time'=>'999','appenconfig'=>'1',); ?>

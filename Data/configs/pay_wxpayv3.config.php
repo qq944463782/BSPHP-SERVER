@@ -1,0 +1,1 @@
+<?php return array('pay_config'=>'','pay_wxpayv3_set'=>'0','pay_wxpayv3_mode'=>'','pay_wxpayv3_mchid'=>'','pay_wxpayv3_appid'=>'','pay_wxpayv3_apiv3_key'=>'','pay_wxpayv3_serial'=>'','pay_wxpayv3_key_path'=>'','pay_post_config'=>'','config'=>'wxpayv3',); ?>

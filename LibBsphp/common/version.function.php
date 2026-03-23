@@ -1,0 +1,5 @@
+<?php
+define('BSPHP_VERSION','v2.5.5');
+define('BSPHP_VERSION_ID','20240328');
+define('BSPHP_VERSION_TIME','1585813991');
+?>

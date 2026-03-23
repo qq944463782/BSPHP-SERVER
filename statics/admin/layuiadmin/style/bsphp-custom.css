@@ -1,0 +1,19 @@
+:root {
+  --bsphp-nav-radius: 10px;
+}
+
+.layui-side-menu .layui-nav-tree .layui-nav-item > a,
+.layui-side-menu .layui-nav-tree .layui-nav-child dd > a {
+  border-radius: var(--bsphp-nav-radius);
+}
+.layadmin-side-shrink .layui-side-menu .layui-nav>.layui-nav-itemed>a {
+    background: rgb(0 0 0 / 0%);
+}
+
+.layui-side-menu .layui-nav .layui-nav-item a {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 45px;
+    padding-right: 30px;
+    font-weight: 600;
+}

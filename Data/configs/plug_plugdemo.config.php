@@ -1,0 +1,1 @@
+<?php return array('pay_config'=>'','plugdemo_set'=>'0','plugdemo_key'=>'','plugdemo_url'=>'','plugdemo_key1'=>'','plugdemo_key2'=>'','plugdemo_key3'=>'','plugdemo_key4'=>'','pay_post_config'=>'',); ?>
