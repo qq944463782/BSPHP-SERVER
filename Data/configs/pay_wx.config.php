@@ -1,1 +1,0 @@
-<?php return array('pay_config'=>'','pay_wx_set'=>'0','pay_wx_id'=>'wx95bdcf9f2fe82262  ','pay_wx_key'=>'aA13145205201314aA5201314aA52013','pay_wx_secert'=>'bac189527ab956f792424c33aa3f31b7','pay_post_config'=>'',); ?>

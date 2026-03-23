@@ -1,1 +1,0 @@
-<?php return array('pay_config'=>'','pay_alipay_set'=>'0','pay_alipay_list'=>'1','pay_alipay_id'=>'2088521416171189','pay_alipay_key'=>'w205o0ummj1a711kgjt9hr5dulzgl3fl','pay_alipay_user'=>'huodiekeji@yeah.net','pay_alipay_payurl'=>'','pay_alipay_webapiurl'=>'','pay_post_config'=>'','config'=>'alipay',); ?>
