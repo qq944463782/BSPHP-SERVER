@@ -63,16 +63,16 @@ if ($pwd !== $pwdb) {
     exit;
 }
 
-if (stristr(Plug_App_DaTa('app_coode'), 'register_sms.lg')) {
-    $log_img = Plug_Push_Cood_Imges($coode);
-    if ((int)$log_img !== 1037) {
-        Plug_Echo_Info(Plug_Lang('验证码错误'), -11111);
-        exit;
-    }
-}
+// if (stristr(Plug_App_DaTa('app_coode'), 'register_sms.lg')) {
+//     $log_img = Plug_Push_Cood_Imges($coode);
+//     if ((int)$log_img !== 1037) {
+//         Plug_Echo_Info(Plug_Lang('验证码错误'), -11111);
+//         exit;
+//     }
+// }
 
 if (!Plug_Otp_Verify_Sms('register', $area, $mobile, $sms_code)) {
-    Plug_Echo_Info(Plug_Lang('验证码错误或已过期.'), -1);
+    Plug_Echo_Info(Plug_Lang('手机短信验证码错误或已过期.'), -1);
     exit;
 }
 

@@ -26,25 +26,41 @@ $pwd      = Plug_Set_Data('pwd');
 $pwdb     = Plug_Set_Data('pwdb');
 $coode    = Plug_Set_Data('coode');
 
-if ($mobile == '' || $sms_code == '' || $pwd == '' || $pwdb == '') {
+
+
+if ($mobile == '') {
     Plug_Echo_Info(Plug_Lang('请填写手机号、验证码和新密码.'), -1);
     exit;
 }
+if ($sms_code == '') {
+    Plug_Echo_Info(Plug_Lang('请填写短信验证码.'), -1);
+    exit;
+}
+if ($pwd == '') {
+    Plug_Echo_Info(Plug_Lang('请填写新密码.'), -1);
+    exit;
+}
+if ($pwdb == '') {  
+    Plug_Echo_Info(Plug_Lang('请填写确认新密码.'), -1);
+    exit;
+}
+
+
 if ($pwd !== $pwdb) {
     Plug_Echo_Info(Plug_Lang('两次密码不一致.'), -1);
     exit;
 }
 
-if (stristr(Plug_App_DaTa('app_coode'), 'resetpwd_sms.lg')) {
-    $log_img = Plug_Push_Cood_Imges($coode);
-    if ((int)$log_img !== 1037) {
-        Plug_Echo_Info(Plug_Lang('验证码错误'), -11111);
-        exit;
-    }
-}
+// if (stristr(Plug_App_DaTa('app_coode'), 'resetpwd_sms.lg')) {
+//     $log_img = Plug_Push_Cood_Imges($coode);
+//     if ((int)$log_img !== 1037) {
+//         Plug_Echo_Info(Plug_Lang('手机短信验证码错误'), -11111);
+//         exit;
+//     }
+// }
 
 if (!Plug_Otp_Verify_Sms('reset', $area, $mobile, $sms_code)) {
-    Plug_Echo_Info(Plug_Lang('验证码错误或已过期.'), -1);
+    Plug_Echo_Info(Plug_Lang('手机短信验证码错误或已过期.'), -1);
     exit;
 }
 
