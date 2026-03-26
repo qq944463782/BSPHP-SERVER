@@ -51,5 +51,5 @@ Demo cases
 - Python-DEMO: https://github.com/qq944463782/BSPHP-Python-DEMO
 - Rust-DEMO: https://github.com/qq944463782/BSPHP-Rust-DEMO
 - GO-DEMO: https://github.com/qq944463782/BSPHP-GO-DEMO
-- CPP-DEMO: https://github.com/qq944463782/BSPHP-CPP-DEMO
+- C++ CPP-DEMO: https://github.com/qq944463782/BSPHP-CPP-DEMO
 - gcpp-c++-macosAndLiunx-DEMO: https://github.com/qq944463782/BSPHP-gc--macosAndLiunx-DEMO
