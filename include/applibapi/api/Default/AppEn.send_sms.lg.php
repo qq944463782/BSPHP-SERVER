@@ -25,11 +25,13 @@ if ($BSphpSeSsL == '') {
     exit;
 }
 
+
+$coode = Plug_Set_Data('coode');
 if ($coode == '') {
     Plug_Echo_Info(Plug_Lang('请输入图片验证码.'), -1);
     exit;
 }
-$coode = Plug_Set_Data('coode');
+
 $log = Plug_Push_Cood_Imges($coode);
 if ((int)$log !== 1037) {
     Plug_Echo_Info(Plug_Lang('图片验证码错误'), -11111);

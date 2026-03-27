@@ -64,7 +64,7 @@ if ($pwd !== $pwdb) {
     Plug_Echo_Info(Plug_Lang('两次密码不一致.'), -1);
     exit;
 }
-if (!PiPei($email, 3)) {
+if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
     Plug_Echo_Info(Plug_Lang('邮箱格式不正确.'), -1);
     exit;
 }
