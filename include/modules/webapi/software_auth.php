@@ -594,7 +594,7 @@ class software_auth
         $pwd        = Plug_Set_Post('pwd');
         $pwdb       = Plug_Set_Post('pwdb');
         $qq         = Plug_Set_Post('qq');
-        $mail       = Plug_Set_Post('mail');
+        $mail       = strtolower(trim((string)Plug_Set_Post('mail')));
         $extension  = Plug_Set_Post('extension'); // 邀请码/推荐人
         // URL 参数 u 优先：若携带则禁止客户端更改邀请码
         $invite_u = Plug_Get_Session_Value('APP_INVITE_U');
@@ -751,7 +751,7 @@ class software_auth
             Plug_Print_Json(array('code' => -1, 'msg' => Plug_Lang('当前系统已关闭注册功能')));
         }
 
-        $email      = trim(Plug_Set_Post('email'));
+        $email      = strtolower(trim(Plug_Set_Post('email')));
         $email_code = Plug_Set_Post('email_code');
         $pwd        = Plug_Set_Post('pwd');
         $pwdb       = Plug_Set_Post('pwdb');

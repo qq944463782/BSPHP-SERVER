@@ -15,7 +15,7 @@ $user = Plug_Set_Data('user');
 $pwd = Plug_Set_Data('pwd');
 $pwdb = Plug_Set_Data('pwdb');
 $qq = Plug_Set_Data('qq');
-$mail = Plug_Set_Data('mail');
+$mail = strtolower(trim((string)Plug_Set_Data('mail')));
 
 $key = Plug_Set_Data('key');
 $img = Plug_Set_Data('img');

@@ -70,7 +70,7 @@ class register_free
         $pwda = Plug_Set_Post('pwda');
         $pwdb = Plug_Set_Post('pwdb');
         $qq = Plug_Set_Post('qq');
-        $mail = Plug_Set_Post('mail');
+        $mail = strtolower(trim((string)Plug_Set_Post('mail')));
         $log_name = '';
         $Submitadd = Plug_Set_Post('Submitadd');
 

@@ -29,7 +29,7 @@ if ((int)Plug_Get_Configs_Value('user', 'user_re_set') !== 1) {
 }
 
 $user      = trim(Plug_Set_Data('user'));
-$email      = trim(Plug_Set_Data('email'));
+$email      = strtolower(trim(Plug_Set_Data('email')));
 $email_code = Plug_Set_Data('email_code');
 $pwd        = Plug_Set_Data('pwd');
 $pwdb       = Plug_Set_Data('pwdb');

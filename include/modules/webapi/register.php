@@ -68,7 +68,7 @@ class register
         $pwda = Plug_Set_Post('pwda');
         $pwdb = Plug_Set_Post('pwdb');
         $qq = Plug_Set_Post('qq');
-        $mail = Plug_Set_Post('mail');
+        $mail = strtolower(trim((string)Plug_Set_Post('mail')));
         $key = Plug_Set_Post('key');
         $img = Plug_Set_Post('img');
         $code_ka = Plug_Set_Post('code_ka');

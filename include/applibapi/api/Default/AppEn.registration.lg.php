@@ -17,7 +17,7 @@ $user = Plug_Set_Data('user');       #注册账号
 $pwd = Plug_Set_Data('pwd');         #注册登录密码
 $pwdb = Plug_Set_Data('pwdb');       #再次输入密码
 $qq = Plug_Set_Data('qq');           #联系qq
-$mail = Plug_Set_Data('mail');       #联系邮箱
+$mail = strtolower(trim((string)Plug_Set_Data('mail')));       #联系邮箱（统一小写）
 
 $key = Plug_Set_Data('key');          #绑定特征/机器码
 $img = Plug_Set_Data('img');          #开启验证码接到的验证码

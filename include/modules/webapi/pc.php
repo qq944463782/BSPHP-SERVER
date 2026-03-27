@@ -129,7 +129,7 @@ class pc
         $pwd = Plug_Set_Post('pwd');
         $pwdb = Plug_Set_Post('pwdb');
         $qq = Plug_Set_Post('qq');
-        $mail = Plug_Set_Post('mail');
+        $mail = strtolower(trim((string)Plug_Set_Post('mail')));
         $extension = Plug_Set_Post('extension') ?: '';
         $Mobile = Plug_Set_Post('mobile');
         $mibao_wenti = Plug_Set_Post('question');

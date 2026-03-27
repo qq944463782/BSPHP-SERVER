@@ -49,7 +49,7 @@ if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
     exit;
 }
 
-$email_safe = addslashes($email);
+$email_safe = strtolower(trim(addslashes($email)));
 if ($scene === 'login') {
     $sql = "SELECT 1 FROM `bs_php_user` WHERE `user_email` = '{$email_safe}' LIMIT 1";
     $row = Plug_Query_Assoc($sql);
