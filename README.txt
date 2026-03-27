@@ -1,5 +1,12 @@
 # BSPHP-SERVER
 BSPHP验证系统服务端 www.bsphp.coom
+让开发人员可以快速集成接口进行收费管理软件.
+
+目前支持所有编程接口，我们致力专业API接口开发.简体、繁体、英文等语言却换
+
+系统涵盖后台管理、代理中心、用户中心、API接口、WEB接口、插件开发.
+
+本系统支持二次开发，核心代码加密，其它插件全部是全源码开放.
 
 
 购卡续费演示
@@ -16,5 +23,6 @@ Rust-DEMO:https://github.com/qq944463782/BSPHP-Rust-DEMO
 GO-DEMO:https://github.com/qq944463782/BSPHP-GO-DEMO
 CPP-DEMO:https://github.com/qq944463782/BSPHP-CPP-DEMO
 gcpp-c++-macosAndLiunx-DEMO:https://github.com/qq944463782/BSPHP-gc--macosAndLiunx-DEMO
-
+- C-DEMO: https://github.com/qq944463782/BSPHP-C-DEMO
+- VB.NET-DEMO: https://github.com/qq944463782/BSPHP-VB.NET-DEMO
 
