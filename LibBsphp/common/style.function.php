@@ -100,7 +100,7 @@ $cfg=class_exists('�������������
 $domain=isset($cfg['local_access_url']) ? trim((string)$cfg['local_access_url']) : '';
 if (empty($domain)) {
 $domain=rtrim((string)(����������������������������������������������������������������::������������������������������������������������������������������������������������('sys', 'url') ?: ''), '/');
-if ($domain==='' && function_exists('������������������������������������������������������������������������������������')) $domain=rtrim(������������������������������������������������������������������������������������(), '/');
+if ($domain==='' ) $domain=rtrim(getSiteUrl(), '/');
 } else {
 $raw=$domain;
 $domain=rtrim($domain, '/');
@@ -109,6 +109,70 @@ if ($domain==='' && $raw !=='') $domain='/';
 $path=ltrim($path, '/');
 if ($domain==='') return $path;
 return ($domain==='/' || substr($domain, -1)==='/') ? ($domain . $path) : ($domain . '/' . $path);
+}
+function getSiteUrl()
+{
+$uri=$_SERVER['REQUEST_URI'] ? $_SERVER['REQUEST_URI'] : ($_SERVER['PHP_SELF'] ? $_SERVER['PHP_SELF'] : $_SERVER['SCRIPT_NAME']);
+$uri=substr($uri, 0, strrpos($uri, '/'));
+if (is___https()) {
+return 'https://' . $_SERVER['HTTP_HOST'] . substr($uri, 0, strrpos($uri, '/') + 1);
+} else {
+return 'http://' . $_SERVER['HTTP_HOST'] . substr($uri, 0, strrpos($uri, '/') + 1);
+}
+}
+function shiliujinzhi($str)
+{
+$hex="";
+for ($i=0; $i < strlen($str); $i++) $hex .=dechex(ord($str[$i]));
+return $hex;
+}
+function is___https()
+{
+if (!empty($_SERVER['HTTPS'])) {
+$h=strtolower((string)$_SERVER['HTTPS']);
+if ($h !=='off' && $h !=='' && $h !=='0') {
+return true;
+}
+}
+if (!empty($_SERVER['REQUEST_SCHEME']) && strtolower((string)$_SERVER['REQUEST_SCHEME'])==='https') {
+return true;
+}
+if (isset($_SERVER['SERVER_PORT']) && (string)$_SERVER['SERVER_PORT']==='443') {
+return true;
+}
+$bsphp_https_proto_keys=array(
+'HTTP_X_FORWARDED_PROTO',
+'HTTP_X_CLIENT_SCHEME',
+'HTTP_CLOUDFRONT_FORWARDED_PROTO',
+'HTTP_X_FORWARDED_PROTOCOL',
+'HTTP_X_SCHEME',
+'HTTP_X_URL_SCHEME',
+);
+foreach ($bsphp_https_proto_keys as $bsphp_k) {
+if (empty($_SERVER[$bsphp_k])) {
+continue;
+}
+$first=strtolower(trim(explode(',', (string)$_SERVER[$bsphp_k])[0]));
+if ($first==='https') {
+return true;
+}
+}
+if (!empty($_SERVER['HTTP_X_FORWARDED_SSL']) && strtolower((string)$_SERVER['HTTP_X_FORWARDED_SSL'])==='on') {
+return true;
+}
+if (!empty($_SERVER['HTTP_FRONT_END_HTTPS'])) {
+$h=strtolower((string)$_SERVER['HTTP_FRONT_END_HTTPS']);
+if ($h !=='off' && $h !=='' && $h !=='0') {
+return true;
+}
+}
+if (!empty($_SERVER['HTTP_CF_VISITOR'])) {
+$j=json_decode((string)$_SERVER['HTTP_CF_VISITOR'], true);
+if (is_array($j) && isset($j['scheme']) && strtolower((string)$j['scheme'])==='https') {
+return true;
+}
+}
+return false;
 }
 function ������������������������������������������������������������������������defined___()
 {

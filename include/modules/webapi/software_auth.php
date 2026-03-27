@@ -22,7 +22,7 @@ if (defined('WEBAPI_SCAN')) return;
  */
 class software_auth
 {
-    const OTP_EXPIRE = 300; // 验证码有效期秒
+    const OTP_EXPIRE = 1800; // 验证码有效期秒
     const OTP_SMS_KEY = 'sa_otp_sms_';
     const OTP_EMAIL_KEY = 'sa_otp_email_';
 
@@ -384,9 +384,9 @@ class software_auth
         $uid        = (int)$row['user_uid'];
         $user       = $row['user_user'];
         $pwd_hash   = $row['user_pwd'];
-        $param_date = HOST_DATE;
-        $param_ip   = getip();
-        $param_UNIX = HOST_UNIX;
+        $param_date = PLUG_DATE();
+        $param_ip   = Plug_Get_IP();
+        $param_UNIX = PLUG_UNIX();
 
         $update_sql = "UPDATE `bs_php_user` 
                        SET `user_DenJi_tmp`='{$param_UNIX}',
@@ -401,11 +401,11 @@ class software_auth
         $param_LoGinNumFlag = 'ALL';
         $param_cookies_md7  = Plug_Cookies_Md7($uid . $param_cookies_pwd . $param_date . $param_ip . $param_LoGinNumFlag);
 
-        set_session_value('USER_UID', $uid);
-        set_session_value('USER_YSE', $param_cookies_pwd);
-        set_session_value('USER_DATE', $param_date);
-        set_session_value('USER_IP', $param_ip);
-        set_session_value('USER_MD7', $param_cookies_md7);
+        plug_set_session_value('USER_UID', $uid);
+        plug_set_session_value('USER_YSE', $param_cookies_pwd);
+        plug_set_session_value('USER_DATE', $param_date);
+        plug_set_session_value('USER_IP', $param_ip);
+        plug_set_session_value('USER_MD7', $param_cookies_md7);
 
         Plug_Print_Json(array('code' => 1011, 'msg' => Plug_Lang('登录成功'), 'user' => $user));
     }
@@ -430,9 +430,11 @@ class software_auth
         if ($email == '') {
             Plug_Print_Json(array('code' => -1, 'msg' => Plug_Lang('请填写邮箱.')));
         }
-        if (!PiPei($email, 3)) {
+        //写正则验证邮箱格式
+        if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
             Plug_Print_Json(array('code' => -1, 'msg' => Plug_Lang('邮箱格式不正确.')));
         }
+           
 
         $email_safe = addslashes($email);
         if ($scene === 'login') {
@@ -550,9 +552,9 @@ class software_auth
         $uid        = (int)$row['user_uid'];
         $user       = $row['user_user'];
         $pwd_hash   = $row['user_pwd'];
-        $param_date = HOST_DATE;
-        $param_ip   = getip();
-        $param_UNIX = HOST_UNIX;
+        $param_date = PLUG_DATE();
+        $param_ip   = Plug_Get_IP();
+        $param_UNIX = PLUG_UNIX();
 
         $update_sql = "UPDATE `bs_php_user` SET `user_DenJi_tmp`='{$param_UNIX}', `user_Login_ip`='{$param_ip}',`user_Login_date`='{$param_date}', `user_CaoShi`='{$param_UNIX}',`user_LoGinNum`=`user_LoGinNum` + 1 WHERE `user_uid`='{$uid}'";
         Plug_Query($update_sql);
@@ -561,11 +563,11 @@ class software_auth
         $param_LoGinNumFlag = 'ALL';
         $param_cookies_md7  = Plug_Cookies_Md7($uid . $param_cookies_pwd . $param_date . $param_ip . $param_LoGinNumFlag);
 
-        set_session_value('USER_UID', $uid);
-        set_session_value('USER_YSE', $param_cookies_pwd);
-        set_session_value('USER_DATE', $param_date);
-        set_session_value('USER_IP', $param_ip);
-        set_session_value('USER_MD7', $param_cookies_md7);
+        plug_set_session_value('USER_UID', $uid);
+        plug_set_session_value('USER_YSE', $param_cookies_pwd);
+        plug_set_session_value('USER_DATE', $param_date);
+        plug_set_session_value('USER_IP', $param_ip);
+        plug_set_session_value('USER_MD7', $param_cookies_md7);
 
         Plug_Print_Json(array('code' => 1011, 'msg' => Plug_Lang('登录成功'), 'user' => $user));
     }
@@ -769,7 +771,7 @@ class software_auth
         if ($pwd !== $pwdb) {
             Plug_Print_Json(array('code' => -1, 'msg' => Plug_Lang('两次密码不一致.')));
         }
-        if (!PiPei($email, 3)) {
+        if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
             Plug_Print_Json(array('code' => -1, 'msg' => Plug_Lang('邮箱格式不正确.')));
         }
 
@@ -865,7 +867,7 @@ class software_auth
             Plug_Print_Json(array('code' => -1, 'msg' => Plug_Lang('手机号未绑定任何账号.')));
         }
         $uid    = (int)$row['user_uid'];
-        $pwd_md = intelligence_password_md6($pwd);
+        $pwd_md = Plug_Password_Md6($pwd);
         Plug_Query("UPDATE `bs_php_user` SET `user_pwd`='{$pwd_md}' WHERE `user_uid`='{$uid}' LIMIT 1");
         Plug_Print_Json(array('code' => 1033, 'msg' => Plug_Lang('密码已重置')));
     }
@@ -905,7 +907,7 @@ class software_auth
         if ($pwd !== $pwdb) {
             Plug_Print_Json(array('code' => -1, 'msg' => Plug_Lang('两次密码不一致.')));
         }
-        if (!PiPei($email, 3)) {
+        if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
             Plug_Print_Json(array('code' => -1, 'msg' => Plug_Lang('邮箱格式不正确.')));
         }
 
@@ -927,7 +929,7 @@ class software_auth
             Plug_Print_Json(array('code' => -1, 'msg' => Plug_Lang('该邮箱未绑定任何账号.')));
         }
         $uid    = (int)$row['user_uid'];
-        $pwd_md = intelligence_password_md6($pwd);
+        $pwd_md = Plug_Password_Md6($pwd);
         Plug_Query("UPDATE `bs_php_user` SET `user_pwd`='{$pwd_md}' WHERE `user_uid`='{$uid}' LIMIT 1");
         Plug_Print_Json(array('code' => 1033, 'msg' => Plug_Lang('密码已重置')));
     }

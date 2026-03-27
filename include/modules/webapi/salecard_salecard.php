@@ -47,10 +47,10 @@ class salecard_salecard
         }
 
         $sys_url = Plug_Get_Configs_Value('sys', 'url');
-        if (function_exists('call_my_storage_file_url') && !empty($app_list)) {
+        if ( !empty($app_list)) {
             foreach ($app_list as &$a) {
                 if (!empty($a['app_sale_img'])) {
-                    $a['app_sale_img'] = call_my_storage_file_url($a['app_sale_img']);
+                    $a['app_sale_img'] = Plug_Get_Storage_File_Url($a['app_sale_img']);
                 }
             }
             unset($a);
@@ -88,15 +88,15 @@ class salecard_salecard
             if (!$appinfo || empty(trim($appinfo['app_sale_title'] ?? ''))) {
                 $err = Plug_Lang('软件不存在或未参与销售');
             } else {
-                if (function_exists('call_my_storage_file_url') && !empty($appinfo['app_sale_img'])) {
-                    $appinfo['app_sale_img'] = call_my_storage_file_url($appinfo['app_sale_img']);
+                if ( !empty($appinfo['app_sale_img'])) {
+                    $appinfo['app_sale_img'] = Plug_Get_Storage_File_Url($appinfo['app_sale_img']);
                 }
                 $sql = "SELECT `lei_id`,`lei_name`,`lei_jiage`,`lei_date`,`lei_img` FROM `bs_php_kalei` 
                         WHERE `lei_daihao`='{$daihao}' AND `lei_jiage`>=0 ORDER BY `lei_sort` ASC, `lei_id` ASC";
                 $res = Plug_Query($sql);
                 while ($row = Plug_Pdo_Fetch_Assoc($res)) {
-                    if (!empty($row['lei_img']) && function_exists('call_my_storage_file_url')) {
-                        $row['lei_img'] = call_my_storage_file_url($row['lei_img']);
+                    if (!empty($row['lei_img']) ) {
+                        $row['lei_img'] = Plug_Get_Storage_File_Url($row['lei_img']);
                     }
                     $row['stock_count'] = $this->_get_stock_count($daihao, (int)$row['lei_id']);
                     $card_list[] = $row;
@@ -358,7 +358,7 @@ class salecard_salecard
     function _get_pay_channels()
     {
         $list = array();
-        $path = defined('BSPHP_DIR_SYS') ? BSPHP_DIR_SYS : dirname(dirname(dirname(__DIR__))) . '/';
+        $path = Plug_Get_Bsphp_Dir();
         $pay_path = $path . 'include/modules/payment/paycood';
         if (!is_dir($pay_path)) return $list;
         foreach (@scandir($pay_path) as $d) {

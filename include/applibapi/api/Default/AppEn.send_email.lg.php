@@ -25,9 +25,13 @@ if ($BSphpSeSsL == '') {
 }
 
 $coode = Plug_Set_Data('coode');
+if ($coode == '') {
+    Plug_Echo_Info(Plug_Lang('请输入图片验证码.'), -1);
+    exit;
+}
 $log = Plug_Push_Cood_Imges($coode);
 if ((int)$log !== 1037) {
-    Plug_Echo_Info(Plug_Lang('验证码错误'), -11111);
+    Plug_Echo_Info(Plug_Lang('图片验证码错误'), -11111);
     exit;
 }
 
@@ -40,7 +44,7 @@ if ($email == '') {
     Plug_Echo_Info(Plug_Lang('请填写邮箱.'), -1);
     exit;
 }
-if (!PiPei($email, 3)) {
+if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
     Plug_Echo_Info(Plug_Lang('邮箱格式不正确.'), -1);
     exit;
 }

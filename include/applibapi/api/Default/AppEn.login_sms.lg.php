@@ -44,16 +44,10 @@ if ($sms_code == '') {
     exit;
 }
 
-if (stristr(Plug_App_DaTa('app_coode'), 'login_sms.lg')) {
-    $log_img = Plug_Push_Cood_Imges($coode);
-    if ((int)$log_img !== 1037) {
-        Plug_Echo_Info(Plug_Lang('验证码错误'), -11111);
-        exit;
-    }
-}
+
 
 if (!Plug_Otp_Verify_Sms('login', $area, $mobile, $sms_code)) {
-    Plug_Echo_Info(Plug_Lang('验证码错误或已过期.'), -1);
+    Plug_Echo_Info(Plug_Lang('手机验证码错误或已过期.'), -1);
     exit;
 }
 
@@ -72,9 +66,9 @@ if ((int)$row['user_IsLock'] !== 0) {
 $uid  = (int)$row['user_uid'];
 $user = $row['user_user'];
 $pwd_hash = $row['user_pwd'];
-$param_date = HOST_DATE;
-$param_ip   = getip();
-$param_UNIX = HOST_UNIX;
+$param_date = PLUG_DATE();
+$param_ip   = Plug_Get_IP();
+$param_UNIX = PLUG_UNIX();
 
 $update_sql = "UPDATE `bs_php_user` SET `user_DenJi_tmp`='{$param_UNIX}',`user_Login_ip`='{$param_ip}',`user_Login_date`='{$param_date}',`user_CaoShi`='{$param_UNIX}',`user_LoGinNum`=`user_LoGinNum`+1 WHERE `user_uid`='{$uid}'";
 Plug_Query($update_sql);
@@ -83,11 +77,11 @@ $param_cookies_pwd  = Plug_Cookies_Md7($pwd_hash);
 $param_LoGinNumFlag = 'ALL';
 $param_cookies_md7  = Plug_Cookies_Md7($uid . $param_cookies_pwd . $param_date . $param_ip . $param_LoGinNumFlag);
 
-set_session_value('USER_UID', $uid);
-set_session_value('USER_YSE', $param_cookies_pwd);
-set_session_value('USER_DATE', $param_date);
-set_session_value('USER_IP', $param_ip);
-set_session_value('USER_MD7', $param_cookies_md7);
+plug_set_session_value('USER_UID', $uid);
+plug_set_session_value('USER_YSE', $param_cookies_pwd);
+plug_set_session_value('USER_DATE', $param_date);
+plug_set_session_value('USER_IP', $param_ip);
+plug_set_session_value('USER_MD7', $param_cookies_md7);
 
 $arr = Plug_Get_App_User_Info($uid, $daihao);
 if (!$arr) {
