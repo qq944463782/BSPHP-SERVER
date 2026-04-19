@@ -396,7 +396,8 @@ CREATE TABLE `bs_php_user` (
   `user_is_pwd` int(11) DEFAULT '0' COMMENT '是否禁止修改密码',
   `user_beizhu` varchar(200) DEFAULT NULL COMMENT '用户备注',
   `user_anget_carid` varchar(255) DEFAULT NULL COMMENT '代理卡串',
-  `user_anget_beizhu` varchar(255) DEFAULT NULL COMMENT '代理商备注'
+  `user_anget_beizhu` varchar(255) DEFAULT NULL COMMENT '代理商备注',
+  `user_extra` longtext DEFAULT NULL COMMENT '用户拓展字段JSON'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 CREATE TABLE `bs_php_userclass` (

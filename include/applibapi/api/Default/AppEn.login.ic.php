@@ -1,4 +1,28 @@
 <?php
+/*
+<api>
+  <name>login.ic</name>
+  <title>卡模式用户登录验证</title>
+    <intro>接口参数说明</intro>
+  <common_params type="1">
+    <param name="api" type="1" required="true" dtype="string" desc="API接口名称"></param>
+    <param name="BSphpSeSsL" type="1" required="true" dtype="string" desc="BSphpSeSsL连接Cookies"></param>
+    <param name="date" type="1" required="false" dtype="string" desc="服务器时间超时验证；可空，后台设置超时0即关闭"></param>
+    <param name="mutualkey" type="1" required="true" dtype="string" desc="通信认证Key，用作软件数据包交换数据验证串"></param>
+    <param name="appsafecode" type="1" required="false" dtype="string" desc="封包劫持检测；可空，客户端提交参数给服务器时原样返回"></param>
+    <param name="md5" type="1" required="false" dtype="string" desc="程序MD5；可空，后台MD5内容要为空"></param>
+  </common_params>
+
+  <params>
+    <param name="icid" required="false" type="string" desc="登录的卡号"></param>
+    <param name="icpwd" required="false" type="string" desc="登录卡密码，没有留空"></param>
+    <param name="key" required="false" type="string" desc="登录验证绑定机器码，软件配置控制开关"></param>
+    <param name="maxoror" required="false" type="string" desc="登录控制多开设备的机器码，必须唯一不然达不到效果"></param>
+    <param name="BSphpSeSsL" required="false" type="string" desc="会话标识"></param>
+  </params>
+</api>
+*/
+
 
 /***********************接口介绍说明******************************************
  * login.ic

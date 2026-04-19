@@ -1,9 +1,46 @@
 <?php
+/*
+<api>
+  <name>registrationaska.lg</name>
+  <title>注册账号 带卡注册</title>
+    <intro>接口参数说明</intro>
+  <common_params type="1">
+    <param name="api" type="1" required="true" dtype="string" desc="API接口名称"></param>
+    <param name="BSphpSeSsL" type="1" required="true" dtype="string" desc="BSphpSeSsL连接Cookies"></param>
+    <param name="date" type="1" required="false" dtype="string" desc="服务器时间超时验证；可空，后台设置超时0即关闭"></param>
+    <param name="mutualkey" type="1" required="true" dtype="string" desc="通信认证Key，用作软件数据包交换数据验证串"></param>
+    <param name="appsafecode" type="1" required="false" dtype="string" desc="封包劫持检测；可空，客户端提交参数给服务器时原样返回"></param>
+    <param name="md5" type="1" required="false" dtype="string" desc="程序MD5；可空，后台MD5内容要为空"></param>
+  </common_params>
+
+  <params>
+    <param name="user" required="false" type="string" desc="用户名"></param>
+    <param name="pwd" required="false" type="string" desc="密码"></param>
+    <param name="pwdb" required="false" type="string" desc="确认密码"></param>
+    <param name="qq" required="false" type="string" desc="联系QQ"></param>
+    <param name="mail" required="false" type="string" desc="联系邮箱"></param>
+    <param name="key" required="false" type="string" desc="绑定特征/机器码"></param>
+    <param name="img" required="false" type="string" desc="图形验证码"></param>
+    <param name="kaid" required="false" type="string" desc="卡号"></param>
+    <param name="kapwd" required="false" type="string" desc="卡密码"></param>
+    <param name="mobile" required="false" type="string" desc="手机号"></param>
+    <param name="mibao_wenti" required="false" type="string" desc="密保问题"></param>
+    <param name="mibao_daan" required="false" type="string" desc="密保答案"></param>
+    <param name="extension" required="false" type="string" desc="邀请人UID"></param>
+    <param name="user_extra" required="false" type="string" desc="用户拓展字段(JSON文本字符串)"></param>
+  </params>
+</api>
+*/
+
 
 
 /***********************接口介绍说明******************************************
  * registrationaska.lg
  * 注册账号 带卡注册
+ *
+ * 请求参数补充：
+ *   user_extra = 用户拓展字段(JSON文本字符串)
+ *   示例：&user_extra={"key1":"","key2":"","key3":""}
  * *****************************************************************************
  */
 #预设好文本字符串数组
@@ -31,6 +68,7 @@ $user_mibao_wenti = Plug_Set_Data('mibao_wenti');
 $user_mibao_daan = Plug_Set_Data('mibao_daan');
 
 $extension = Plug_Set_Data('extension');
+$user_extra = Plug_Set_Data('user_extra');  #用户拓展字段(JSON文本字符串)
 
 
 /**
@@ -73,7 +111,7 @@ if ($extension > 0) {
 /**
  * 用户注册
  */
-$log = Plug_User_Re_Add($user, $pwd, $pwdb, $qq, $mail, $extension, $Mobile, $user_mibao_wenti, $user_mibao_daan);
+$log = Plug_User_Re_Add($user, $pwd, $pwdb, $qq, $mail, $extension, $Mobile, $user_mibao_wenti, $user_mibao_daan, $user_extra);
 if ($log == 1005) {
 
 
