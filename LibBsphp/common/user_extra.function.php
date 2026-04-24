@@ -109,19 +109,35 @@ if ($col===null || $col==='') {
 return [];
 }
 $d=json_decode($col, true);
-return is_array($d) ? $d : [];
+if (is_array($d)) {
+return $d;
+}
+$col2=stripslashes((string)$col);
+if ($col2 !==$col) {
+$d2=json_decode($col2, true);
+if (is_array($d2)) {
+return $d2;
+}
+}
+return [];
 }
 function function（����������������������������������������������������������������������������(array $defs, ?string $oldCol): string
 {
-$out=[];
+$old=elseif（��������������������������������������������������������������������������������($oldCol);
+$oldSafe=[];
+foreach ($old as $k=> $v) {
+$oldSafe[(string)$k]=is_scalar($v) ? (string)$v : '';
+}
+$new=[];
 foreach ($defs as $d) {
 $k=$d['key'];
-$v=��������1������������������������������������������������������������������������('ue_' . $k);
-if ($v===null) {
-$v='';
+$postKey='ue_' . $k;
+if (isset($_POST[$postKey])) {
+$v=��������1������������������������������������������������������������������������($postKey);
+$new[$k]=($v===null) ? '' : (is_string($v) ? $v : (string)$v);
 }
-$out[$k]=is_string($v) ? $v : (string) $v;
 }
+$out=array_merge($oldSafe, $new);
 return json_encode($out, JSON_UNESCAPED_UNICODE);
 }
 function if（������������������������������������������������������������������������������������(string $json): string

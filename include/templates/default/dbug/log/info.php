@@ -8,8 +8,8 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link rel="stylesheet" href="//cache.bsphp.com/pro-statics/MyBs/admin/layuiadmin/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="//cache.bsphp.com/pro-statics/MyBs/admin/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="<?php echo Plug_Get_Url_Statics() ?>layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="<?php echo Plug_Get_Url_Statics() ?>layuiadmin/style/admin.css" media="all">
 </head>
 
 <body data="BSPHP-PRO 2022本系统受国家版权局保护请勿破解或者二次开发传播">
@@ -213,10 +213,10 @@
     </div>
 
 
-    <script src="//cache.bsphp.com/pro-statics/MyBs/admin/layuiadmin/layui/bsphp.js"></script>
+    <script src="<?php echo Plug_Get_Url_Statics() ?>layuiadmin/layui/bsphp.js"></script>
     <script>
         layui.config({
-            base: '//cache.bsphp.com/pro-statics/default/admin/layuiadmin/' //静态资源所在路
+            base: '<?php echo Plug_Get_Url_Statics() ?>layuiadmin/' //静态资源所在路
         }).extend({
             index: 'lib/index' //主入口模块
         }).use(['index', 'set', 'jquery', 'table', 'layer'], function() {

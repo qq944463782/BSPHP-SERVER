@@ -7,8 +7,9 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link rel="stylesheet" href="<?php echo call_my_Get_Url_Statics() ?>layuiadmin/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="<?php echo call_my_Get_Url_Statics() ?>layuiadmin/style/admin.css" media="all">
+
+    <link rel="stylesheet" href="<?php echo Plug_Get_Url_Statics() ?>layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="<?php echo Plug_Get_Url_Statics() ?>layuiadmin/style/admin.css" media="all">
 </head>
 
 <body data="BSPHP-PRO 2019本系统受国家版权局保护请勿破解或者二次开发传播">
@@ -157,11 +158,11 @@
         </div>
     </div>
 
-    <div id="foot">Copyright © 2009-2026 <a href="http://www.bsphp.com?pro" target="_blank">Bsphp-Pro <?php echo BSPHP_VERSION; ?></a> Bsphp.com <br>
+    <div id="foot">Copyright © 2009-2026 <a href="http://www.bsphp.com?pro" target="_blank">Bsphp-Rsa <?php echo BSPHP_VERSION; ?></a> Bsphp.com <br>
         All Rights Reserved </div>
-        <script src="<?php echo call_my_Get_Url_Statics() ?>layuiadmin/layui/bsphp.js"></script>
+        <script src="<?php echo Plug_Get_Url_Statics() ?>layuiadmin/layui/bsphp.js"></script>
     <script>
-    bsphp_report_quickstat('<?php echo call_my_Lang("接口监控调试插件"); ?>');
+    bsphp_report_quickstat('<?php echo Plug_Lang("接口监控调试插件"); ?>');
 
 var Bsphp_G_TO = '<?php echo Plug_Lang('到'); ?>';
    var Bsphp_G_P ='<?php echo Plug_Lang('页'); ?>';
@@ -171,7 +172,7 @@ var Bsphp_G_TO = '<?php echo Plug_Lang('到'); ?>';
 
    
         layui.config({
-            base: '<?php echo call_my_Get_Url_Statics() ?>layuiadmin/' /**静态资源所在路*/
+            base: '<?php echo Plug_Get_Url_Statics() ?>layuiadmin/' /**静态资源所在路*/
             ,  version: "20240311"
         }).extend({
             index: 'lib/index'
