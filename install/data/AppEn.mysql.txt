@@ -129,6 +129,7 @@ CREATE TABLE `bs_php_appinfo` (
   `app_tosgin` varchar(100) DEFAULT NULL,
   `app_sort` varchar(100) DEFAULT '',
   `app_sale_kefu` text COMMENT '软件销售',
+  `app_user_extra` text COMMENT '软件用户列表拓展字段(JSON)',
   `app_sale_desc` text COMMENT '软件销售',
   `app_sale_img` varchar(500) DEFAULT NULL COMMENT '软件销售',
   `app_sale_title` varchar(255) DEFAULT NULL COMMENT '软件销售',
@@ -315,7 +316,8 @@ CREATE TABLE `bs_php_pattern_login` (
   `L_links_open` int(11) DEFAULT '0' COMMENT '账号登录数',
   `L_links` int(11) DEFAULT '0' COMMENT '机器登录量',
   `L_links_open_off` int(11) DEFAULT '0' COMMENT '上限关闭模式0=直接提示 1=关闭最早的',
-  `L_beizhu` varchar(255) DEFAULT NULL COMMENT '用户备注'
+  `L_beizhu` varchar(255) DEFAULT NULL COMMENT '用户备注',
+  `L_user_extra` text COMMENT '软件用户拓展字段(JSON)'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='卡密/账号模式登录表';
 
 CREATE TABLE `bs_php_paydata` (

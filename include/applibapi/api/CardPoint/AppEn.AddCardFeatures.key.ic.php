@@ -2,9 +2,9 @@
 /*
 <api>
   <name>AddCardFeatures.key.ic</name>
-  <title>login.ic</title>
+  <title>卡密模式扣点用户注册/登录验证</title>
     <intro>接口参数说明</intro>
-  <common_params type="1">
+  <common_params type="1s">
     <param name="api" type="1" required="true" dtype="string" desc="API接口名称"></param>
     <param name="BSphpSeSsL" type="1" required="true" dtype="string" desc="BSphpSeSsL连接Cookies"></param>
     <param name="date" type="1" required="false" dtype="string" desc="服务器时间超时验证；可空，后台设置超时0即关闭"></param>
@@ -17,6 +17,7 @@
     <param name="carid" required="false" type="string" desc="需要登录特征，没有就会注册"></param>
     <param name="key" required="false" type="string" desc="绑定特征"></param>
     <param name="maxoror" required="false" type="string" desc="多开控制唯一特征码"></param>
+    <param name="app_user_extra" required="false" type="string" desc="软件用户拓展字段(JSON文本字符串)"></param>
   </params>
 </api>
 */
@@ -37,6 +38,7 @@ $appen_str_log = plug_load_langs_array('applib', 'appen_str_log');
 $key_carid = Plug_Set_Data('carid');  #需要登录特征，没有就会注册
 $key = Plug_Set_Data('key');          #绑定特征
 $maxoror = Plug_Set_Data('maxoror');  #多开控制唯一特征码
+$app_user_extra = Plug_Set_Data('app_user_extra');  #软件用户拓展字段(JSON文本字符串)
 $daihao = PLUG_DAIHAO();
 
 if ($key == '') Plug_Echo_Info(Plug_Lang('KEY不能空'));
@@ -52,7 +54,7 @@ if (Plug_App_data('app_MoShi') !== 'CardPoint') {
 if ($log == 1073) {
 
     $date = (int)Plug_App_data('app_re_date'); //获取赠送时间
-    Plug_App_Login_Add_Key($key_carid, $daihao, $date, $key);
+    Plug_App_Login_Add_Key($key_carid, $daihao, $date, $key, '', '', '0', 0, 0, $app_user_extra);
 
     //再次登录验证
     $log = Plug_Car_Login_point($key_carid, '', $maxoror, $daihao);

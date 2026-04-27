@@ -48,19 +48,39 @@
           <label><?php echo Plug_Lang('再次确认密码'); ?></label>
           <input name="pwdb" value="<?php echo htmlspecialchars($pwdb ?? ''); ?>" type="password" placeholder="<?php echo Plug_Lang('再次确认密码'); ?>">
         </div>
-        <div class="fg">
-          <label><?php echo Plug_Lang('QQ'); ?></label>
-          <input name="qq" value="<?php echo htmlspecialchars($qq ?? ''); ?>" type="text" placeholder="<?php echo Plug_Lang('用于找回密码等操作'); ?>">
-        </div>
-        <?php if (!empty($u_from_url ?? '')) { ?>
-          <!-- URL 已带邀请码时，隐藏输入框，只保留隐藏字段 -->
-          <input type="hidden" name="u" value="<?php echo htmlspecialchars($u ?? ''); ?>">
+        <?php if (!empty($show_extra ?? 1)) { ?>
+          <div class="fg">
+            <label><?php echo Plug_Lang('QQ'); ?></label>
+            <input name="qq" value="<?php echo htmlspecialchars($qq ?? ''); ?>" type="text" placeholder="<?php echo Plug_Lang('用于找回密码等操作'); ?>">
+          </div>
+          <?php if (!empty($u_from_url ?? '')) { ?>
+            <!-- URL 已带邀请码时，隐藏输入框，只保留隐藏字段 -->
+            <input type="hidden" name="u" value="<?php echo htmlspecialchars($u ?? ''); ?>">
+          <?php } else { ?>
+          <div class="fg">
+            <label><?php echo Plug_Lang('邀请码'); ?></label>
+            <input name="u" value="<?php echo htmlspecialchars($u ?? ''); ?>" type="text" placeholder="<?php echo Plug_Lang('请输入邀请码/推荐人账号（没有可留空）'); ?>">
+          </div>
+          <?php } ?>
+          <?php foreach (($user_extra_defs ?? array()) as $ue_def) { ?>
+            <?php $ue_key = (string)($ue_def['key'] ?? ''); if ($ue_key === '') { continue; } ?>
+            <?php $ue_label = (string)($ue_def['label'] ?? $ue_key); ?>
+            <?php $ue_required = !empty($ue_def['required']); ?>
+            <?php $ue_post_key = 'ue_' . $ue_key; ?>
+            <div class="fg">
+              <label><?php echo htmlspecialchars($ue_label); ?><?php if ($ue_required) { ?> *<?php } ?></label>
+              <input name="<?php echo htmlspecialchars($ue_post_key); ?>" value="<?php echo htmlspecialchars((string)Plug_Set_Post($ue_post_key)); ?>" type="text" placeholder="<?php echo htmlspecialchars($ue_required ? ('请填写' . $ue_label) : ('请填写' . $ue_label . '（选填）')); ?>">
+            </div>
+          <?php } ?>
+          <?php if (!empty($show_extra_empty_tip ?? '')) { ?>
+            <div class="msg"><?php echo htmlspecialchars($show_extra_empty_tip); ?></div>
+          <?php } ?>
         <?php } else { ?>
-        <div class="fg">
-          <label><?php echo Plug_Lang('邀请码'); ?></label>
-          <input name="u" value="<?php echo htmlspecialchars($u ?? ''); ?>" type="text" placeholder="<?php echo Plug_Lang('请输入邀请码/推荐人账号（没有可留空）'); ?>">
-        </div>
+          <input type="hidden" name="u" value="<?php echo htmlspecialchars($u ?? ''); ?>">
         <?php } ?>
+        <input type="hidden" name="daihao" value="<?php echo (int)($daihao ?? 0); ?>">
+        <input type="hidden" name="show_extra" value="<?php echo !empty($show_extra ?? 1) ? '1' : '0'; ?>">
+        <input type="hidden" name="success_url" value="<?php echo htmlspecialchars($success_url ?? ''); ?>">
         <?php if (!empty($log_name)) { ?><div class="msg<?php echo (strpos($log_name,'成功')!==false)?' ok':''; ?>"><?php echo htmlspecialchars($log_name); ?></div><?php } ?>
         <button type="submit" name="Submitadd" value="1" class="btn"><?php echo Plug_Lang('确认注册'); ?></button>
       </div>

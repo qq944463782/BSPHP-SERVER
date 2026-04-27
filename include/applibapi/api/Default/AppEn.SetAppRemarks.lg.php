@@ -2,7 +2,7 @@
 /*
 <api>
   <name>SetAppRemarks.lg</name>
-  <title>用户漫游配置</title>
+  <title>登录用户漫游备注读写</title>
     <intro>接口参数说明</intro>
   <common_params type="1">
     <param name="api" type="1" required="true" dtype="string" desc="API接口名称"></param>
@@ -14,7 +14,7 @@
   </common_params>
 
   <params>
-    <param name="remarks" required="false" type="string" desc="保存用户数据 -1为读取"></param>
+    <param name="remarks" required="false" type="string" desc="漫游备注内容；传 -1 时读取当前值"></param>
   </params>
 </api>
 */

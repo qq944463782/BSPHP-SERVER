@@ -25,7 +25,8 @@
     <param name="mibao_wenti" required="false" type="string" desc="密保问题"></param>
     <param name="mibao_daan" required="false" type="string" desc="密保答案"></param>
     <param name="extension" required="false" type="string" desc="邀请人UID"></param>
-    <param name="user_extra" required="false" type="string" desc="用户拓展字段(JSON文本字符串)"></param>
+    <param name="user_extra" required="false" type="string" desc="全局用户拓展字段(JSON文本字符串)"></param>
+    <param name="app_user_extra" required="false" type="string" desc="软件用户拓展字段(JSON文本字符串)"></param>
   </params>
 </api>
 */
@@ -62,7 +63,8 @@ $Mobile = Plug_Set_Data('mobile');    #联系电话
 $user_mibao_wenti = Plug_Set_Data('mibao_wenti');    #密保问题
 $user_mibao_daan = Plug_Set_Data('mibao_daan');      #密保答案
 $extension = Plug_Set_Data('extension');    #邀请人UID
-$user_extra = Plug_Set_Data('user_extra');  #用户拓展字段(JSON文本字符串)
+$user_extra = Plug_Set_Data('user_extra');  #全局用户拓展字段(JSON文本字符串)
+$app_user_extra = Plug_Set_Data('app_user_extra');  #软件用户拓展字段(JSON文本字符串)
 
 
 /**
@@ -104,7 +106,7 @@ if ($log == 1005) {
 
 
 
-    Plug_App_Login_Add_Key($uid, $daihao, $date, $key, $user, $user); //添加特征
+    Plug_App_Login_Add_Key($uid, $daihao, $date, $key, $user, $user, '0', 0, 0, $app_user_extra); //添加特征
 
 
 

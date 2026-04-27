@@ -2,7 +2,7 @@
 /*
 <api>
   <name>set_user_extra.lg</name>
-  <title>修改用户拓展字段</title>
+  <title>更新登录用户 user_extra</title>
     <intro>接口参数说明</intro>
   <common_params type="1">
     <param name="api" type="1" required="true" dtype="string" desc="API接口名称"></param>
@@ -14,7 +14,7 @@
   </common_params>
 
   <params>
-    <param name="user_extra" required="true" type="string" desc="用户拓展字段(JSON字符串)，按键合并到现有 user_extra"></param>
+    <param name="user_extra" required="true" type="string" desc="用户拓展字段 JSON 字符串；按键合并并覆盖同名旧值"></param>
   </params>
 </api>
 */

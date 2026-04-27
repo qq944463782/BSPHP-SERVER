@@ -2,7 +2,7 @@
 /*
 <api>
   <name>SetAppRemarks.ic</name>
-  <title>用户漫游配置</title>
+  <title>卡密用户漫游备注读写</title>
     <intro>接口参数说明</intro>
   <common_params type="1">
     <param name="api" type="1" required="true" dtype="string" desc="API接口名称"></param>
@@ -14,9 +14,9 @@
   </common_params>
 
   <params>
-    <param name="icid" required="false" type="string" desc="直接使用卡号密码验证"></param>
-    <param name="icpwd" required="false" type="string" desc="直接使用卡号密码验证"></param>
-    <param name="remarks" required="false" type="string" desc="参数说明"></param>
+    <param name="icid" required="false" type="string" desc="卡号（可选；不传则读取会话中的卡号）"></param>
+    <param name="icpwd" required="false" type="string" desc="卡密（可选；不传则读取会话中的卡密）"></param>
+    <param name="remarks" required="false" type="string" desc="漫游备注内容；传 -1 时读取当前值"></param>
   </params>
 </api>
 */

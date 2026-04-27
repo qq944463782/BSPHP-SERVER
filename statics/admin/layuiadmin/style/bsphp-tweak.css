@@ -1,5 +1,5 @@
 :root {
-    --bsphp-primary: #1b84ed;
+    --Bsphp-Rsaimary: #1b84ed;
     --bsphp-bg: #f5f7fb;
     --bsphp-text: #374151;
     --bsphp-title: #111827;
@@ -54,8 +54,8 @@ html {
 }
 
 .layui-btn-primary:hover {
-    border-color: var(--bsphp-primary);
-    color: var(--bsphp-primary);
+    border-color: var(--Bsphp-Rsaimary);
+    color: var(--Bsphp-Rsaimary);
 }
 
 .layui-input,
@@ -71,7 +71,7 @@ html {
 
 .layui-input:focus,
 .layui-textarea:focus {
-    border-color: var(--bsphp-primary) !important;
+    border-color: var(--Bsphp-Rsaimary) !important;
     box-shadow: 0 0 0 3px rgba(27, 132, 237, .12);
 }
 
@@ -86,7 +86,7 @@ html {
 
 .layui-form-select dl dd.layui-this {
     background-color: rgba(27, 132, 237, .12);
-    color: var(--bsphp-primary);
+    color: var(--Bsphp-Rsaimary);
 }
 
 .layui-table-view {
@@ -145,7 +145,7 @@ html {
 }
 
 .layui-laypage .layui-laypage-curr .layui-laypage-em {
-    background-color: var(--bsphp-primary);
+    background-color: var(--Bsphp-Rsaimary);
 }
 
 .layui-elem-quote {
@@ -204,7 +204,7 @@ html {
 
 .layui-side-menu .layui-nav .layui-nav-item>a:hover {
     background-color: rgba(27, 132, 237, .08);
-    color: var(--bsphp-primary);
+    color: var(--Bsphp-Rsaimary);
 }
 
 .layui-nav-itemed>.layui-nav-child {
@@ -218,11 +218,11 @@ html {
 .layui-nav-tree .layui-nav-child dd.layui-this,
 .layui-nav-tree .layui-nav-child dd.layui-this a {
     background-color: rgba(27, 132, 237, .12) !important;
-    color: var(--bsphp-primary) !important;
+    color: var(--Bsphp-Rsaimary) !important;
 }
 
 .layui-nav-tree .layui-nav-bar {
-    background-color: var(--bsphp-primary) !important;
+    background-color: var(--Bsphp-Rsaimary) !important;
     width: 3px;
     border-radius: 2px;
 }
@@ -237,7 +237,7 @@ html {
 .layui-layout-admin .layui-header .layui-nav .layui-this:after,
 .layui-layout-admin .layui-header .layui-nav-bar {
     height: 3px;
-    background-color: var(--bsphp-primary) !important;
+    background-color: var(--Bsphp-Rsaimary) !important;
     border-radius: 3px;
 }
 
@@ -254,13 +254,13 @@ html {
 }
 
 .layadmin-pagetabs .layui-tab-title li.layui-this {
-    color: var(--bsphp-primary);
+    color: var(--Bsphp-Rsaimary);
 }
 
 .layadmin-pagetabs .layui-tab-title li.layui-this:after {
     height: 3px;
     border: none;
-    background-color: var(--bsphp-primary);
+    background-color: var(--Bsphp-Rsaimary);
 }
 
 /* 面包屑与按钮间距 */
@@ -268,7 +268,7 @@ html {
     color: var(--bsphp-text);
 }
 .layui-breadcrumb a:hover {
-    color: var(--bsphp-primary);
+    color: var(--Bsphp-Rsaimary);
 }
 
 .layui-btn + .layui-btn {

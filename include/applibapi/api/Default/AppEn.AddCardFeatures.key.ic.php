@@ -17,6 +17,7 @@
     <param name="carid" required="false" type="string" desc="需要登录特征，没有就会注册"></param>
     <param name="key" required="false" type="string" desc="绑定特征"></param>
     <param name="maxoror" required="false" type="string" desc="多开控制唯一特征码"></param>
+    <param name="app_user_extra" required="false" type="string" desc="软件用户拓展字段(JSON文本字符串)"></param>
   </params>
 </api>
 */
@@ -32,6 +33,7 @@
 $key_carid = Plug_Set_Data('carid');  #需要登录特征，没有就会注册
 $key = Plug_Set_Data('key');          #绑定特征
 $maxoror = Plug_Set_Data('maxoror');  #多开控制唯一特征码
+$app_user_extra = Plug_Set_Data('app_user_extra');  #软件用户拓展字段(JSON文本字符串)
 $daihao = PLUG_DAIHAO();
 
 #预设好文本字符串数组
@@ -62,7 +64,7 @@ if ($log == 1073) {
 
 
 
-    Plug_App_Login_Add_Key($key_carid, $daihao, $date, $key);
+    Plug_App_Login_Add_Key($key_carid, $daihao, $date, $key, '', '', '0', 0, 0, $app_user_extra);
 
     //再次登录验证
     $log = Plug_Car_Login($key_carid, '', $maxoror, $daihao);

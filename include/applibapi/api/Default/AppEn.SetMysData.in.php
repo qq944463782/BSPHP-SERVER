@@ -2,7 +2,7 @@
 /*
 <api>
   <name>SetMysData.in</name>
-  <title>远程配置设置</title>
+  <title>写入远程配置键值</title>
     <intro>接口参数说明</intro>
   <common_params type="1">
     <param name="api" type="1" required="true" dtype="string" desc="API接口名称"></param>
@@ -14,8 +14,8 @@
   </common_params>
 
   <params>
-    <param name="keys" required="false" type="string" desc="键值"></param>
-    <param name="datas" required="false" type="string" desc="存储参数，如果特殊内容建议base64编码或者utl编码等编码测试"></param>
+    <param name="keys" required="false" type="string" desc="配置键名"></param>
+    <param name="datas" required="false" type="string" desc="配置值（特殊内容建议先做 base64/url 编码）"></param>
   </params>
 </api>
 */

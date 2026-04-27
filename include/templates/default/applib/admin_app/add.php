@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title><?php echo ����������������������������������������������������������������::������������������������������������������������������������������������������������("sys", "name") ?> - <?php echo ��������������������������������������������������������������������������������('添加新软件'); ?> Bsphp-Pro</title>
+<title><?php echo ����������������������������������������������������������������::������������������������������������������������������������������������������������("sys", "name") ?> - <?php echo ��������������������������������������������������������������������������������('添加新软件'); ?> Bsphp-Rsa</title>
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="<?php echo ������������������������������������������������������������������������() ?>layuiadmin/style/admin.css" media="all">
 <style>.app-add-help .layui-word-aux { margin: 4px 0; width: 100%; }.app-add-help .layui-input-block { margin-left: 110px; width: calc(100% - 130px); max-width: 800px; }</style>
 </head>
-<body data="BSPHP-PRO 2022本系统受国家版权局保护请勿破解或者二次开发传播">
+<body data="Bsphp-Rsa 2022本系统受国家版权局保护请勿破解或者二次开发传播">
 <div class="layui-fluid">
 <div class="layui-row layui-col-space15">
 <div class="layui-col-md12">
@@ -70,7 +70,7 @@ if (@$����������������R�����
 </div>
 </div>
 <div id="foot" style="margin-top:20px;padding:10px 0;color:#999;font-size:12px;text-align:center;">
-Copyright © 2009-2026 <a href="http://www.bsphp.com?pro" target="_blank">Bsphp-Pro <?php echo BSPHP_VERSION; ?></a> Bsphp.com · All Rights Reserved
+Copyright © 2009-2026 <a href="http://www.bsphp.com?pro" target="_blank">Bsphp-Rsa <?php echo BSPHP_VERSION; ?></a> Bsphp.com · All Rights Reserved
 </div>
 <script src="<?php echo ������������������������������������������������������������������������() ?>layuiadmin/layui/bsphp.js"></script>
 <script>bsphp_report_quickstat('<?php echo ��������������������������������������������������������������������������������("添加新软件"); ?>');layui.config({base: '<?php echo ������������������������������������������������������������������������(); ?>layuiadmin/'}).extend({ index: 'lib/index' }).use(['form', 'layer', 'jquery'], function(){var form=layui.form;var layer=layui.layer;var $=layui.jquery;form.verify({number: function(value){if(value && (isNaN(value) || parseInt(value) <=0)){return '<?php echo addslashes(��������������������������������������������������������������������������������("代号必须为正整数")); ?>';}if(value && value.length > 8){return '<?php echo addslashes(��������������������������������������������������������������������������������("软件代号长度不能超8位数字")); ?>';}}});form.on('submit(app_add_submit)', function(){var loadIndex=layer.load(1);$.ajax({type: 'post',url: 'index.php?m=applib&c=admin_app&a=add',data: $('#bsphppost').serialize(),dataType: 'json',success: function(ret){layer.close(loadIndex);if(ret && ret.msg){if((ret.msg + '').indexOf('<?php echo addslashes(��������������������������������������������������������������������������������("添加成功")); ?>') >=0 || (ret.msg + '').indexOf('添加成功') >=0){layer.msg(ret.msg, {icon: 1}, function(){});} else {layer.msg(ret.msg, {icon: 2});}} else {layer.msg('<?php echo addslashes(��������������������������������������������������������������������������������("请求异常")); ?>', {icon: 2});}},error: function(xhr){layer.close(loadIndex);layer.msg(xhr.responseText || '<?php echo addslashes(��������������������������������������������������������������������������������("请求失败")); ?>', {icon: 2});}});return false;});form.render();});</script>

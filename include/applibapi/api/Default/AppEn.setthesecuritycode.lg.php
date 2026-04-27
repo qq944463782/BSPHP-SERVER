@@ -2,7 +2,7 @@
 /*
 <api>
   <name>setthesecuritycode.lg</name>
-  <title>设置密保信息</title>
+  <title>设置登录用户密保问题与答案</title>
     <intro>接口参数说明</intro>
   <common_params type="1">
     <param name="api" type="1" required="true" dtype="string" desc="API接口名称"></param>
@@ -14,8 +14,8 @@
   </common_params>
 
   <params>
-    <param name="problem" required="false" type="string" desc="密保问题"></param>
-    <param name="answer" required="false" type="string" desc="密保答案"></param>
+    <param name="problem" required="false" type="string" desc="密保问题（长度建议>=3）"></param>
+    <param name="answer" required="false" type="string" desc="密保答案（长度建议>=3）"></param>
   </params>
 </api>
 */

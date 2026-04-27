@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="<?php echo Plug_Get_Url_Statics() ?>layuiadmin/style/admin.css" media="all">
 </head>
 
-<body data="BSPHP-PRO 2022本系统受国家版权局保护请勿破解或者二次开发传播">
+<body data="Bsphp-Rsa 2022本系统受国家版权局保护请勿破解或者二次开发传播">
 
     <div class="layui-flui1d">
         <div class="layui-row layui-col-space15">

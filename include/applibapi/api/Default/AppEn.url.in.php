@@ -2,7 +2,7 @@
 /*
 <api>
   <name>url.in</name>
-  <title>url.lg</title>
+  <title>取URL地址，软件配置对应配置</title>
     <intro>接口参数说明</intro>
   <common_params type="1">
     <param name="api" type="1" required="true" dtype="string" desc="API接口名称"></param>

@@ -2,7 +2,7 @@
 /*
 <api>
   <name>send_sms.lg</name>
-  <title>send_sms.in</title>
+  <title>发送手机短信验证码（带图像验证码）</title>
     <intro>接口参数说明</intro>
   <common_params type="1">
     <param name="api" type="1" required="true" dtype="string" desc="API接口名称"></param>
@@ -16,7 +16,7 @@
   <params>
     <param name="BSphpSeSsL" required="false" type="string" desc="会话标识"></param>
     <param name="coode" required="false" type="string" desc="图形验证码"></param>
-    <param name="scene" required="false" type="string" desc="参数说明"></param>
+    <param name="scene" required="false" type="string" desc="参数说明 场景：login|register|reset"></param>
     <param name="mobile" required="false" type="string" desc="手机号"></param>
     <param name="area" required="false" type="string" desc="国际区号"></param>
   </params>

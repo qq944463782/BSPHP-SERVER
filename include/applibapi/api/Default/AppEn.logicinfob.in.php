@@ -2,7 +2,7 @@
 /*
 <api>
   <name>logicinfob.in</name>
-  <title>logicinfob.lg</title>
+  <title>逻辑提示B 内容</title>
     <intro>接口参数说明</intro>
   <common_params type="1">
     <param name="api" type="1" required="true" dtype="string" desc="API接口名称"></param>

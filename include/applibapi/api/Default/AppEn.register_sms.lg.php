@@ -21,7 +21,8 @@
     <param name="pwd" required="false" type="string" desc="密码"></param>
     <param name="pwdb" required="false" type="string" desc="确认密码"></param>
     <param name="key" required="false" type="string" desc="绑定特征/机器码"></param>
-    <param name="user_extra" required="false" type="string" desc="用户拓展字段(JSON文本字符串)"></param>
+    <param name="user_extra" required="false" type="string" desc="全局用户拓展字段(JSON文本字符串)"></param>
+    <param name="app_user_extra" required="false" type="string" desc="软件用户拓展字段(JSON文本字符串)"></param>
     <param name="coode" required="false" type="string" desc="图形验证码"></param>
   </params>
 </api>
@@ -66,6 +67,7 @@ $pwd      = Plug_Set_Data('pwd');
 $pwdb     = Plug_Set_Data('pwdb');
 $key      = Plug_Set_Data('key');
 $user_extra = Plug_Set_Data('user_extra');
+$app_user_extra = Plug_Set_Data('app_user_extra');
 $coode    = Plug_Set_Data('coode');
 
 if ($user == '' ) {
@@ -115,7 +117,7 @@ if ($log == 1005) {
     $is_point_mode = ($app_moshi === 'LoginPoint' || $app_moshi === 'CardPoint');
     $date = $is_point_mode ? $gift_value : (PLUG_UNIX() + $gift_value);
     $uid  = Plug_Query_One('bs_php_user', 'user_user', $user, '`user_uid`');
-    Plug_App_Login_Add_Key($uid, $daihao, $date, $key, $user, $user);
+    Plug_App_Login_Add_Key($uid, $daihao, $date, $key, $user, $user, '0', 0, 0, $app_user_extra);
 
     if ($gift_value == 0) {
         Plug_Echo_Info(Plug_Lang('注册成功'), 1005);

@@ -2,7 +2,7 @@
 /*
 <api>
   <name>setcarnot.ic</name>
-  <title>解除绑定</title>
+  <title>卡密解绑（扣除解绑时长）</title>
     <intro>接口参数说明</intro>
   <common_params type="1">
     <param name="api" type="1" required="true" dtype="string" desc="API接口名称"></param>
@@ -14,8 +14,8 @@
   </common_params>
 
   <params>
-    <param name="icid" required="false" type="string" desc="直接传递卡号"></param>
-    <param name="icpwd" required="false" type="string" desc="卡密码"></param>
+    <param name="icid" required="false" type="string" desc="卡号（可选；不传则走当前会话卡号）"></param>
+    <param name="icpwd" required="false" type="string" desc="卡密（可选；不传则走当前会话卡密）"></param>
   </params>
 </api>
 */

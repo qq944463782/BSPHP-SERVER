@@ -15,7 +15,7 @@
  * 如果没有收到该页面返回的 success 信息，支付宝会在24小时内按一定的时间策略重发通知
  */
 
-//http://pro.vip.bsphp.com/Plug/payment/alipay/return_url.php?body=Bsphp-pro+-+%E5%85%85%E5%80%BC%E7%94%A8%E6%88%B7%3A944463782%40qq.com+-+%E4%BD%99%E9%A2%9D%E5%85%85%E5%80%BC&buyer_email=mebaby2012%40vip.qq.com&buyer_id=2088802377461750&exterface=create_direct_pay_by_user&is_success=T&notify_id=RqPnCoPT3K9%252Fvwbh3Ihy9de4K%252BtgiDSZw6eGHz07qwT91XA4MRPR7mkOHPmlDVG%252Bgi2V&notify_time=2019-01-06+16%3A05%3A23&notify_type=trade_status_sync&out_trade_no=201901061604444728&payment_type=1&seller_email=huodiekeji%40yeah.net&seller_id=2088521416171189&subject=Bsphp-pro+-+%E5%85%85%E5%80%BC%E7%94%A8%E6%88%B7%3A944463782%40qq.com+-+%E4%BD%99%E9%A2%9D%E5%85%85%E5%80%BC&total_fee=1.00&trade_no=2019010622001461750596499914&trade_status=TRADE_SUCCESS&sign=d37597c4485f843337edded68cde5917&sign_type=MD5
+//http://pro.vip.bsphp.com/Plug/payment/alipay/return_url.php?body=Bsphp-Rsa+-+%E5%85%85%E5%80%BC%E7%94%A8%E6%88%B7%3A944463782%40qq.com+-+%E4%BD%99%E9%A2%9D%E5%85%85%E5%80%BC&buyer_email=mebaby2012%40vip.qq.com&buyer_id=2088802377461750&exterface=create_direct_pay_by_user&is_success=T&notify_id=RqPnCoPT3K9%252Fvwbh3Ihy9de4K%252BtgiDSZw6eGHz07qwT91XA4MRPR7mkOHPmlDVG%252Bgi2V&notify_time=2019-01-06+16%3A05%3A23&notify_type=trade_status_sync&out_trade_no=201901061604444728&payment_type=1&seller_email=huodiekeji%40yeah.net&seller_id=2088521416171189&subject=Bsphp-Rsa+-+%E5%85%85%E5%80%BC%E7%94%A8%E6%88%B7%3A944463782%40qq.com+-+%E4%BD%99%E9%A2%9D%E5%85%85%E5%80%BC&total_fee=1.00&trade_no=2019010622001461750596499914&trade_status=TRADE_SUCCESS&sign=d37597c4485f843337edded68cde5917&sign_type=MD5
 $user_class=bs_lib::intelligence_load_modules_class('user','user');
 	
 require_once("alipay.config.php");
