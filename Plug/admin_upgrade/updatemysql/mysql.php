@@ -2,7 +2,7 @@
 defined('BSPHP_SET') or die('Not,This File Not Can in Ie Open');
 if (BSPHP_SET !='ADMIN') die('Not,This File Not Can in Ie Modules');
 return array (
-'generated_at'=> '2026-04-24 19:46:04',
+'generated_at'=> '2026-04-29 16:54:19',
 'tables'=>
 array (
 'bs_php_add'=>
@@ -353,7 +353,7 @@ array (
 PRIMARY KEY (`id`),
 UNIQUE KEY `uniq_path_name` (`path`,`name`),
 KEY `idx_last_user_time` (`last_user`(32),`last_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8mb4 COMMENT=\'后台页面快捷统计\'',
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4 COMMENT=\'后台页面快捷统计\'',
 ),
 'bs_php_admin_quickstat_pinned'=>
 array (
@@ -664,7 +664,7 @@ array (
 PRIMARY KEY (`id`),
 UNIQUE KEY `uuid_2` (`uuid`),
 KEY `uuid` (`uuid`)
-) ENGINE=MyISAM AUTO_INCREMENT=4514 DEFAULT CHARSET=utf8 COMMENT=\'bsphp调试记录表！\'',
+) ENGINE=MyISAM AUTO_INCREMENT=4576 DEFAULT CHARSET=utf8 COMMENT=\'bsphp调试记录表！\'',
 ),
 'bs_php_app_custom_config'=>
 array (
@@ -1910,7 +1910,7 @@ KEY `car_buy_by` (`car_buy_by`(32)),
 KEY `idx_car_reDATE` (`car_reDATE`),
 KEY `idx_car_DaiHao_reDATE` (`car_DaiHao`,`car_reDATE`),
 KEY `idx_car_DaiHao_Lei_sale` (`car_DaiHao`,`car_Lei`,`car_sale_flag`)
-) ENGINE=MyISAM AUTO_INCREMENT=138 DEFAULT CHARSET=utf8 COMMENT=\'卡密系列表\'',
+) ENGINE=MyISAM AUTO_INCREMENT=145 DEFAULT CHARSET=utf8 COMMENT=\'卡密系列表\'',
 ),
 'bs_php_custom_data_info'=>
 array (
@@ -1978,6 +1978,14 @@ array (
 'default'=> NULL,
 'extra'=> '',
 'comment'=> '卡类名称',
+),
+'lei_beizhu'=>
+array (
+'type'=> 'varchar(500)',
+'nullable'=> true,
+'default'=> NULL,
+'extra'=> '',
+'comment'=> '卡类备注',
 ),
 'lei_date'=>
 array (
@@ -2186,6 +2194,7 @@ array (
 'create_sql'=> 'CREATE TABLE `bs_php_kalei` (
 `lei_id` int(11) NOT NULL AUTO_INCREMENT COMMENT \'卡类ID\',
 `lei_name` char(150) NOT NULL COMMENT \'卡类名称\',
+`lei_beizhu` varchar(500) DEFAULT NULL COMMENT \'卡类备注\',
 `lei_date` int(5) NOT NULL COMMENT \'天数\',
 `lei_jiage` float(9,2) NOT NULL COMMENT \'价格\',
 `lei_daili` float(9,2) NOT NULL COMMENT \'代理价\',
@@ -2211,7 +2220,7 @@ KEY `lei_class` (`lei_class`),
 KEY `lei_name` (`lei_name`),
 KEY `lei_jiage` (`lei_jiage`),
 KEY `lei_daihao` (`lei_daihao`)
-) ENGINE=MyISAM AUTO_INCREMENT=128 DEFAULT CHARSET=utf8 COMMENT=\'卡类表\'',
+) ENGINE=MyISAM AUTO_INCREMENT=139 DEFAULT CHARSET=utf8 COMMENT=\'卡类表\'',
 ),
 'bs_php_kuka'=>
 array (
@@ -2339,7 +2348,7 @@ KEY `kuka_biaoji` (`kuka_biaoji`),
 KEY `kuka_kalei` (`kuka_kalei`),
 KEY `kuka_uid` (`kuka_uid`),
 KEY `kuka_kalei_2` (`kuka_kalei`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT=\'库存卡\'',
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT=\'库存卡\'',
 ),
 'bs_php_language'=>
 array (
@@ -2815,7 +2824,7 @@ KEY `idx_links_session` (`links_session`(64)),
 KEY `idx_links_user_daihao_set` (`links_user_name`(64),`links_daihao`,`links_set`),
 KEY `idx_links_userid_daihao` (`links_user_id`,`links_daihao`),
 KEY `idx_links_out_set` (`links_out_time`,`links_set`)
-) ENGINE=MyISAM AUTO_INCREMENT=981 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT=\'多端登录会话表\'',
+) ENGINE=MyISAM AUTO_INCREMENT=1008 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT=\'多端登录会话表\'',
 ),
 'bs_php_log'=>
 array (
@@ -2925,7 +2934,7 @@ KEY `leixing` (`leixing`),
 KEY `user` (`user`),
 KEY `ip` (`ip`),
 KEY `date` (`date`)
-) ENGINE=MyISAM AUTO_INCREMENT=345 DEFAULT CHARSET=utf8 COMMENT=\'系统日志表\'',
+) ENGINE=MyISAM AUTO_INCREMENT=374 DEFAULT CHARSET=utf8 COMMENT=\'系统日志表\'',
 ),
 'bs_php_moshi'=>
 array (
@@ -3169,6 +3178,14 @@ array (
 'default'=> NULL,
 'extra'=> '',
 'comment'=> '用户UID',
+),
+'L_agent_uid'=>
+array (
+'type'=> 'int(11)',
+'nullable'=> false,
+'default'=> '0',
+'extra'=> '',
+'comment'=> '所属代理UID',
 ),
 'L_daihao'=>
 array (
@@ -3471,10 +3488,19 @@ array (
 0=> 'L_vip_unix',
 ),
 ),
+'L_agent_uid'=>
+array (
+'unique'=> false,
+'columns'=>
+array (
+0=> 'L_agent_uid',
+),
+),
 ),
 'create_sql'=> 'CREATE TABLE `bs_php_pattern_login` (
 `L_id` int(11) NOT NULL AUTO_INCREMENT COMMENT \'ID\',
 `L_User_uid` char(150) NOT NULL COMMENT \'用户UID\',
+`L_agent_uid` int(11) NOT NULL DEFAULT \'0\' COMMENT \'所属代理UID\',
 `L_daihao` int(8) NOT NULL COMMENT \'软件代号\',
 `L_re_date` datetime NOT NULL COMMENT \'注册时间\',
 `L_vip_date` datetime NOT NULL COMMENT \'VIP到期时间\',
@@ -3511,8 +3537,9 @@ KEY `L_re_ip` (`L_re_ip`),
 KEY `L_beizhu` (`L_beizhu`),
 KEY `idx_L_daihao_User_uid` (`L_daihao`,`L_User_uid`(64)),
 KEY `idx_L_daihao_key_info` (`L_daihao`,`L_key_info`(64)),
-KEY `idx_L_vip_unix` (`L_vip_unix`)
-) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT=\'卡密/账号模式登录表\'',
+KEY `idx_L_vip_unix` (`L_vip_unix`),
+KEY `L_agent_uid` (`L_agent_uid`)
+) ENGINE=MyISAM AUTO_INCREMENT=501 DEFAULT CHARSET=utf8 COMMENT=\'卡密/账号模式登录表\'',
 ),
 'bs_php_pay_log'=>
 array (
@@ -4459,7 +4486,7 @@ KEY `user_Mobile` (`user_Mobile`),
 KEY `user_qq` (`user_qq`),
 KEY `user_email` (`user_email`),
 KEY `user_pwd` (`user_pwd`)
-) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8 COMMENT=\'用户表\'',
+) ENGINE=MyISAM AUTO_INCREMENT=601 DEFAULT CHARSET=utf8 COMMENT=\'用户表\'',
 ),
 'bs_php_user_rmb_log'=>
 array (
@@ -4596,7 +4623,7 @@ PRIMARY KEY (`id`),
 KEY `log_uid` (`log_uid`),
 KEY `log_user` (`log_user`),
 KEY `log_date` (`log_date`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT=\'用户余额变动日志\'',
+) ENGINE=MyISAM AUTO_INCREMENT=108 DEFAULT CHARSET=utf8 COMMENT=\'用户余额变动日志\'',
 ),
 'bs_php_userclass'=>
 array (
@@ -4944,7 +4971,7 @@ array (
 PRIMARY KEY (`id`),
 KEY `log_user` (`log_user`),
 KEY `log_date` (`log_date`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT=\'邀请推广日志\'',
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT=\'邀请推广日志\'',
 ),
 'custom_data_werew'=>
 array (

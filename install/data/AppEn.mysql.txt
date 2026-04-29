@@ -192,6 +192,7 @@ CREATE TABLE `bs_php_cardseries` (
 CREATE TABLE `bs_php_kalei` (
   `lei_id` int(11) NOT NULL COMMENT '卡类ID',
   `lei_name` char(150) NOT NULL COMMENT '卡类名称',
+  `lei_beizhu` varchar(500) DEFAULT NULL COMMENT '卡类备注',
   `lei_date` int(5) NOT NULL COMMENT '天数',
   `lei_jiage` float(9,2) NOT NULL COMMENT '价格',
   `lei_daili` float(9,2) NOT NULL COMMENT '代理价',
@@ -297,6 +298,7 @@ CREATE TABLE `bs_php_news_class` (
 CREATE TABLE `bs_php_pattern_login` (
   `L_id` int(11) NOT NULL COMMENT 'ID',
   `L_User_uid` char(150) NOT NULL COMMENT '用户UID',
+  `L_agent_uid` int(11) NOT NULL DEFAULT '0' COMMENT '所属代理UID',
   `L_daihao` int(8) NOT NULL COMMENT '软件代号',
   `L_re_date` datetime NOT NULL COMMENT '注册时间',
   `L_vip_date` datetime NOT NULL COMMENT 'VIP到期时间',

@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <link rel="stylesheet" href="<?php echo ������������������������������������������������������������������������() ?>layuiadmin/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="<?php echo ������������������������������������������������������������������������() ?>layuiadmin/style/admin.css" media="all">
+<style>.layui-fluid {padding-bottom: 120px;}.layui-card-body {overflow: visible;}.layui-form-select dl {z-index: 2000;}</style>
 </head>
 <body data="Bsphp-Rsa 2022本系统受国家版权局保护请勿破解或者二次开发传播">
 <div class="layui-fluid">

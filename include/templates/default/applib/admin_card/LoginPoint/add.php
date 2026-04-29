@@ -39,6 +39,13 @@
 <div class="layui-form-mid layui-word-aux"><?php echo ��������������������������������������������������������������������������������('充值卡制作卡开头字符 如果:Z、j、GG 10位字符内'); ?></div>
 </div>
 <div class="layui-form-item">
+<label class="layui-form-label"><?php echo ��������������������������������������������������������������������������������('备注'); ?></label>
+<div class="layui-input-inline" style="width: 320px;">
+<input type="text" name="lei_beizhu" id="lei_beizhu" value="" class="layui-input">
+</div>
+<div class="layui-form-mid layui-word-aux"><?php echo ��������������������������������������������������������������������������������('卡类型内部备注，仅后台展示'); ?></div>
+</div>
+<div class="layui-form-item">
 <label class="layui-form-label"><?php echo ��������������������������������������������������������������������������������('卡类图片'); ?></label>
 <div class="layui-input-inline" style="width: 320px;">
 <input type="text" name="lei_img" id="lei_img" value="" class="layui-input" style="display:inline-block;width:calc(100% - 90px);vertical-align:middle;">

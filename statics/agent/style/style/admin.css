@@ -362,7 +362,10 @@ html {
 
 .layadmin-side-shrink .layui-layout-admin .layui-logo {
     width: 60px;
-    background-image: url(res/logo.png)
+    background-image: url(res/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center
 }
 
 .layadmin-side-shrink .layui-layout-admin .layui-logo span {
@@ -1428,4 +1431,62 @@ html {
     -webkit-appearance: none;
     width: 10px;
     height: 10px;
+}
+
+/* global ui polish */
+.layui-card {
+    border-radius: 10px;
+    border: 1px solid #eef2f7;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, .04);
+}
+
+.layui-card-header {
+    font-weight: 600;
+    color: #1f2937;
+    border-bottom-color: #eef2f7;
+}
+
+.layui-card-body {
+    padding: 18px 18px 14px;
+}
+
+.layui-elem-quote {
+    margin-bottom: 16px;
+    border-left-color: #1e9fff;
+    background-color: #f7fbff;
+    color: #3b82f6;
+}
+
+.layui-form[wid100] .layui-form-label {
+    color: #2f3542;
+    font-weight: 600;
+}
+
+.layui-form[wid100] .layui-form-item .layui-input-inline {
+    min-width: 240px;
+}
+
+.layui-form-mid.layui-word-aux {
+    color: #8a94a6;
+}
+
+.layui-input,
+.layui-select,
+.layui-textarea {
+    border-radius: 6px;
+    border-color: #dde4ee;
+}
+
+.layui-input:focus,
+.layui-textarea:focus,
+.layui-form-select dl dd.layui-this {
+    border-color: #8ab8ff;
+}
+
+.layui-btn {
+    border-radius: 6px;
+}
+
+.layui-btn-normal {
+    box-shadow: 0 2px 8px rgba(30, 159, 255, .22);
 }

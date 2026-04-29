@@ -345,7 +345,10 @@ html {
 
 .layadmin-side-shrink .layui-layout-admin .layui-logo {
     width: 60px;
-    background-image: url(res/logo.png)
+    background-image: url(res/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center
 }
 
 .layadmin-side-shrink .layui-layout-admin .layui-logo span {
@@ -1400,7 +1403,7 @@ html {
 }
 
 .layui-nav-itemed>a, .layui-nav-tree .layui-nav-title a, .layui-nav-tree .layui-nav-title a:hover {
-    color: #1b84ed!important;
+    color: #464c5b!important;
 }
 .layui-side-menu .layui-nav .layui-nav-item>a {
    

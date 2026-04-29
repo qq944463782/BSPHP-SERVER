@@ -11,12 +11,12 @@ INSERT INTO `bs_php_appinfo` (`app_daihao`, `app_name`, `app_off`, `app_off_name
 
 
 
-INSERT INTO `bs_php_kalei` (`lei_id`, `lei_name`, `lei_date`, `lei_jiage`, `lei_daili`, `lei_daihao`, `lei_ktzf`, `lei_type`, `lei_weight`, `lei_class`, `lei_cardint`, `lei_cardset`, `lei_pwdint`, `lei_pwdset`, `lei_for`, `lei_for_id`, `lei_for_oid`, `lei_money`, `lei_links_open`, `lei_links`, `lei_sort`) VALUES
-(122, '天卡', 1, 1.00, 1.00, 8888888, 'T', 0, 1, 9, 25, 0, 25, 0, 1, 0, '', 0.00, 0, 0, 10),
-(52, '季卡', 90, 90.00, 90.00, 8888888, 'J', 0, 0, 9, 0, 0, 0, 0, 0, 0, '', 0.00, 0, 0, 20),
-(53, '年卡', 365, 365.00, 365.00, 8888888, 'M', 0, 0, 9, 0, 0, 0, 0, 0, 0, '', 0.00, 0, 0, 30),
-(54, '小时卡', 3, 3.00, 3.00, 8888888, 'S', 5, 0, 0, 25, 0, 0, 0, 1, 0, '', 0.00, 0, 0, 40),
-(127, 'T', 1, 1.00, 1.00, 66666666, 'BS', 0, 0, 0, 25, 0, 0, 0, 1, 0, '', 0.00, 0, 0, 50);
+INSERT INTO `bs_php_kalei` (`lei_id`, `lei_name`, `lei_beizhu`, `lei_date`, `lei_jiage`, `lei_daili`, `lei_daihao`, `lei_ktzf`, `lei_type`, `lei_weight`, `lei_class`, `lei_cardint`, `lei_cardset`, `lei_pwdint`, `lei_pwdset`, `lei_for`, `lei_for_id`, `lei_for_oid`, `lei_money`, `lei_links_open`, `lei_links`, `lei_sort`, `lei_img`) VALUES
+(122, '天卡', '', 1, 1.00, 1.00, 8888888, 'T', 0, 1, 9, 25, 0, 25, 0, 1, 0, '', 0.00, 0, 0, 10, ''),
+(52, '季卡', '', 90, 90.00, 90.00, 8888888, 'J', 0, 0, 9, 0, 0, 0, 0, 0, 0, '', 0.00, 0, 0, 20, ''),
+(53, '年卡', '', 365, 365.00, 365.00, 8888888, 'M', 0, 0, 9, 0, 0, 0, 0, 0, 0, '', 0.00, 0, 0, 30, ''),
+(54, '小时卡', '', 3, 3.00, 3.00, 8888888, 'S', 5, 0, 0, 25, 0, 0, 0, 1, 0, '', 0.00, 0, 0, 40, ''),
+(127, 'T', '', 1, 1.00, 1.00, 66666666, 'BS', 0, 0, 0, 25, 0, 0, 0, 1, 0, '', 0.00, 0, 0, 50, '');
 
 
 
@@ -45,10 +45,10 @@ INSERT INTO `bs_php_sysconfig` (`sys_ini`, `sys_val`) VALUES
 ('agents', '[]');
 
 
-INSERT INTO `bs_php_news` (`news_id`, `news_table`, `news_test`, `news_class`, `news_unix`) VALUES
-(79, '你好一级代理', '5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG', 92000, 1543658161),
-(80, '你好一级代理', '5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG5L2g5aW95LiA57qn5Luj55CG', 92000, 1543658171),
-(81, '你好二级代理', '5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG5L2g5aW95LqM57qn5Luj55CG', 91000, 1543658186);
+INSERT INTO `bs_php_news` (`news_id`, `news_table`, `news_test`, `news_class`, `news_daihao`, `news_unix`) VALUES
+(79, '你好一级代理', 'PHA+5Luj55CG56uv5YWo5rqQ56CB5Y+v5pSv5oyB5LqM5qyh5L+u5pS55byA5Y+R6Lev5b6E77yaaW5jbHVkZS9tb2R1bGVzL2FnZW50IOWQjuWPsC0mZ3Q757O757uf6K6+572uLSZndDsg5Luj55CG5ZWG5bmz5Y+w6K6+572uIOWSjCDku6PnkIblr7zoiKroj5zljZXmjqfliLYg5Y+v5Lul6L+b6KGM5o6n5Yi25pi+56S65ZKM6YWN572uPC9wPg==', 92000, 0, 1777483893),
+(80, '你好一级代理', 'PHA+MjAyNuW5tOWvueS7o+eQhuW5s+WPsOmHjeWkp+abtOaWsO+8jOmcgOimgeS7gOS5iOWKn+iDveWPr+S7peiBlOezu+WuouacjeS/ruaUueWumuWItuWPjemmiO+8jFFROjk0NDQ2Mzc4MjwvcD4=', 92000, 0, 1777481478),
+(81, '你好二级代理', 'PHA+6L+Z5Liq5LiW57qn5Luj55CG5Y+v6KeB55qE5YaF5a65PC9wPg==', 91000, 0, 1777481502);
 
 
 INSERT INTO `bs_php_news_class` (`class_id`, `class_name`) VALUES
