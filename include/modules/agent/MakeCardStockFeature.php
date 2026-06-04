@@ -102,7 +102,7 @@ class MakeCardStockFeature
             Plug_Add_AppenLog('agent_ka_log', "UID:{$this->user_array['user_uid']}," . Plug_Lang("库存制作数量") . ":$shu," . Plug_Lang("制作时间") . ":$zhi_date", $this->user_array['user_user']);
             $sql = "UPDATE`bs_php_kuka`SET `kuka_val`=`kuka_val`-'{$shu}' WHERE  `bs_php_kuka`.`kuka_id`='{$kuka_array['kuka_id']}';";
             Plug_Query($sql);
-            Plug_Print_Json(array('code' => 8, 'msg' => Plug_Lang("库卡制作成功!"), 'url' => 'index.php?m=agent&c=sp&a=show&date=' . $zhi_date . '&id=' . $select));
+            Plug_Print_Json(array('code' => 8, 'msg' => Plug_Lang("库卡制作成功!"), 'url' => 'index.php?m=agent&c=CardManageFeature&a=show&date=' . urlencode($zhi_date) . '&id=' . $select));
         }
 
         $sql = "SELECT*FROM`bs_php_kalei` ";

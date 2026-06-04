@@ -177,6 +177,27 @@ class CardManageFeature
         include Plug_Load_Default_Path();
     }
 
+    function call_show()
+    {
+        Plug_Agent_Assert_Menu('card_manage', $this->Grade, false);
+
+        $date = Plug_Set_Get('date');
+        $param_sql = "SELECT*FROM`bs_php_cardseries`WHERE`car_reDATE`='{$date}'AND`car_admin`='{$this->user_array['user_uid']}'";
+        $param_db_array_value = Plug_Query($param_sql);
+        $tset = '';
+        if ($param_db_array_value) {
+            while ($param_array_value = Plug_Pdo_Fetch_Assoc($param_db_array_value)) {
+                if ($param_array_value['car_pwd'] == '') {
+                    $tset .= $param_array_value['car_name'] . "\n";
+                } else {
+                    $tset .= Plug_Lang('卡:', 'card') . $param_array_value['car_name'] . Plug_Lang('  密:', 'card') . $param_array_value['car_pwd'] . Plug_Lang('  时间', 'carrd') . $param_array_value['car_TianShu'] . Plug_Lang('天', 'card') . "\n";
+                }
+            }
+        }
+
+        include Plug_Load_Default_Path();
+    }
+
     function call_table_json()
     {
         Plug_Agent_Assert_Menu('card_manage', $this->Grade, true);

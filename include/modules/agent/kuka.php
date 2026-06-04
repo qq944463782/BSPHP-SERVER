@@ -180,9 +180,7 @@ class kuka
             }
 
 
-            Plug_Print_Json(array('code' => 8, 'msg' => Plug_Lang("库卡制作成功!"), 'url' => 'index.php?m=agent&c=CardManageFeature&a=table'));
-
-            // location('index.php?m=agent_new&c=sp&a=show&date=' . $zhi_date . '&id=' . $select);
+            Plug_Print_Json(array('code' => 8, 'msg' => Plug_Lang("库卡制作成功!"), 'url' => 'index.php?m=agent&c=CardManageFeature&a=show&date=' . urlencode($zhi_date) . '&id=' . $kuka_array['kuka_kalei']));
             //print_R($leixing_array);
 
         }

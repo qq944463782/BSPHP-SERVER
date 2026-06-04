@@ -142,7 +142,7 @@ class MakeCardBalanceFeature
                 Plug_Print_Json(array('code' => 8, 'msg' => Plug_Lang("制卡成功,已存到库存卡!"), 'url' => 'index.php?m=agent&c=kuka&a=kuka_add'));
             }
 
-            Plug_Print_Json(array('code' => 8, 'msg' => Plug_Lang("制卡成功!"), 'url' => 'index.php?m=agent&c=sp&a=show&date=' . $zhi_date . '&id=' . $select));
+            Plug_Print_Json(array('code' => 8, 'msg' => Plug_Lang("制卡成功!"), 'url' => 'index.php?m=agent&c=CardManageFeature&a=show&date=' . urlencode($zhi_date) . '&id=' . $select));
         }
 
         $sql = "SELECT `bs_php_kalei`.* FROM `bs_php_kalei`,`bs_php_appinfo` WHERE `lei_daili`> -1 and `bs_php_appinfo`.`app_daihao`=`bs_php_kalei`.`lei_daihao`   ORDER BY `lei_sort` ASC,`lei_ktzf` ASC";
