@@ -158,17 +158,158 @@ include ������������
 private function _generate_app_rsa_keys()
 {
 $result=array('server_pem'=> '', 'server_key'=> '', 'client_pem'=> '', 'client_key'=> '');
-$serverKeys=����������������������������������������������������case����(2048);
+$serverKeys=$this->_generate_rsa_keypair(2048);
 if (!empty($serverKeys['ok'])) {
 $result['server_key']=$serverKeys['private_pem'];
 $result['server_pem']=$serverKeys['public_pem'];
 }
-$clientKeys=����������������������������������������������������case����(2048);
+$clientKeys=$this->_generate_rsa_keypair(2048);
 if (!empty($clientKeys['ok'])) {
 $result['client_key']=$clientKeys['private_pem'];
 $result['client_pem']=$clientKeys['public_pem'];
 }
 return $result;
+}
+private function _openssl_collect_errors()
+{
+$errors=array();
+while ($msg=openssl_error_string()) {
+$errors[]=$msg;
+}
+return $errors;
+}
+private function _openssl_guess_cnf()
+{
+$candidates=array();
+$env=getenv('OPENSSL_CONF');
+if ($env) {
+$candidates[]=$env;
+}
+if (defined('OPENSSL_CONF') && OPENSSL_CONF) {
+$candidates[]=OPENSSL_CONF;
+}
+$ini=ini_get('openssl.cafile');
+if ($ini) {
+$candidates[]=dirname($ini) . DIRECTORY_SEPARATOR . 'openssl.cnf';
+}
+$paths=array(
+'/etc/ssl/openssl.cnf',
+'/etc/pki/tls/openssl.cnf',
+'/usr/local/etc/openssl/openssl.cnf',
+'/usr/local/etc/openssl@3/openssl.cnf',
+'/opt/homebrew/etc/openssl@3/openssl.cnf',
+'C:/php/extras/ssl/openssl.cnf',
+'C:/xampp/php/extras/openssl/openssl.cnf',
+'C:/wamp64/bin/php/php' . PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION . '/extras/ssl/openssl.cnf',
+);
+if (PHP_BINARY) {
+$phpDir=dirname(PHP_BINARY);
+$paths[]=$phpDir . '/extras/ssl/openssl.cnf';
+$paths[]=$phpDir . '/extras/openssl/openssl.cnf';
+}
+$candidates=array_merge($candidates, $paths);
+foreach ($candidates as $path) {
+if ($path && is_file($path) && is_readable($path)) {
+return $path;
+}
+}
+return '';
+}
+private function _openssl_create_minimal_cnf($dir)
+{
+$path=rtrim($dir, '/\\') . DIRECTORY_SEPARATOR . 'rsa_openssl.cnf';
+if (is_file($path) && is_readable($path)) {
+return $path;
+}
+$content=<<<CNF
+openssl_conf=openssl_init
+[openssl_init]
+providers=provider_sect
+[provider_sect]
+default=default_sect
+[default_sect]
+activate=1
+[req]
+default_bits=2048
+default_md=sha256
+distinguished_name=req_distinguished_name
+[req_distinguished_name]
+CNF;
+if (@file_put_contents($path, $content)===false) {
+return '';
+}
+return $path;
+}
+private function _generate_rsa_keypair($bits=2048)
+{
+$this->_openssl_collect_errors();
+$bits=(int)$bits;
+if ($bits < 1024) {
+$bits=1024;
+}
+if ($bits > 4096) {
+$bits=4096;
+}
+$base=array(
+'private_key_bits'=> $bits,
+'private_key_type'=> OPENSSL_KEYTYPE_RSA,
+);
+$attempts=array(
+array('config'=> $base),
+);
+$cnf=$this->_openssl_guess_cnf();
+if ($cnf) {
+$attempts[]=array('config'=> $base + array('config'=> $cnf));
+}
+$cnfDirs=array();
+if (defined('BSPHP_DIR_DATA') && BSPHP_DIR_DATA) {
+$cnfDirs[]=BSPHP_DIR_DATA;
+}
+if (defined('����������������������������������������4��������������������') && ����������������������������������������4��������������������) {
+$cnfDirs[]=����������������������������������������4��������������������;
+}
+$cnfDirs[]=sys_get_temp_dir();
+foreach ($cnfDirs as $dir) {
+if (!$dir || !is_dir($dir) || !is_writable($dir)) {
+continue;
+}
+$localCnf=$this->_openssl_create_minimal_cnf($dir);
+if ($localCnf) {
+$attempts[]=array('config'=> $base + array('config'=> $localCnf));
+break;
+}
+}
+$lastErrors=array();
+foreach ($attempts as $attempt) {
+$this->_openssl_collect_errors();
+$res=@openssl_pkey_new($attempt['config']);
+if ($res===false) {
+$lastErrors=$this->_openssl_collect_errors();
+continue;
+}
+$privKey='';
+if (!openssl_pkey_export($res, $privKey, null, $attempt['config'])) {
+$lastErrors=$this->_openssl_collect_errors();
+continue;
+}
+$details=openssl_pkey_get_details($res);
+if ($details===false || empty($details['key'])) {
+$lastErrors=$this->_openssl_collect_errors();
+continue;
+}
+return array(
+'ok'=> true,
+'public_pem'=> $details['key'],
+'private_pem'=> $privKey,
+'errors'=> array(),
+);
+}
+return array(
+'ok'=> false,
+'public_pem'=> '',
+'private_pem'=> '',
+'errors'=> $lastErrors ? $lastErrors : array('openssl_pkey_new 失败，未返回详细错误'),
+);
 }
 function call_appini()
 {
@@ -482,7 +623,7 @@ include ������������
 function call_gen_cert()
 {
 $this->��������������������������������Q��������������������������������������������(����������������������������������������������������������������������������(97).����������������������������������������������������������������������������(112).����������������������������������������������������������������������������(112).����������������������������������������������������������������������������(95).����������������������������������������������������������������������������(49));
-$keys=����������������������������������������������������case����(2048);
+$keys=$this->_generate_rsa_keypair(2048);
 if (empty($keys['ok'])) {
 $msg=!empty($keys['errors']) ? implode('; ', $keys['errors']) : ��������������������������������������������������������������������������������('生成失败');
 return（��������������������������������������������������������������������������������(array(����������������������������������������������������������������������������(99).����������������������������������������������������������������������������(111).����������������������������������������������������������������������������(100).����������������������������������������������������������������������������(101)=> ����������������������������������������������������������������������������(49), ����������������������������������������������������������������������������(109).����������������������������������������������������������������������������(115).����������������������������������������������������������������������������(103)=> ��������������������������������������������������������������������������������('生成失败') . ': ' . $msg));
