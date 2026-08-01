@@ -8,9 +8,10 @@ $data=$array_encrypted[0];
 $server_app_client_key=Plug_App_DaTa('app_client_key');
 $server_app_client_key=fix_key_format($server_app_client_key, 'private');
 if (openssl_private_decrypt(base64_decode($signature), $signature_data, $server_app_client_key)) {
-echo "OK|";
 } else {
-echo "NO-DECRYPT|";
+if (!defined('BSPHP_APPEN_BODY_PREFIX')) {
+define('BSPHP_APPEN_BODY_PREFIX', 'NO-DECRYPT|');
+}
 }
 $data=$array_encrypted[0];
 $signature_arr=explode('|', $signature_data);

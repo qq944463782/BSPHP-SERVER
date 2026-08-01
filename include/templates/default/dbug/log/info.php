@@ -86,7 +86,7 @@
                                             <pre class="layui-code" lay-title="parameter原始数据"><?php echo $array['parameter'] ?></pre><br>
                                         </li>
                                         <li><span class="layui-badge layui-bg-blue"><?php echo Plug_Lang('parameter解密数据:'); ?></span>
-                                            <pre class="layui-code" lay-title="parameter原始数据"><?php echo (base64_decode($array['decrypt_data'])) ?></pre><br>
+                                            <pre class="layui-code" lay-title="parameter原始数据"><?php if($array['decrypt_data'] != '') { echo (base64_decode($array['decrypt_data'])); } else { echo '未解密'; } ?></pre><br>
                                         </li>
 
 
