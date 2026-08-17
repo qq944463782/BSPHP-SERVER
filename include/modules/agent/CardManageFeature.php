@@ -92,7 +92,7 @@ class CardManageFeature
                     if ($array['car_IsLock'] == 1) {
                         $car_pur_date = strtotime($array['car_pur_date']);
                         $car_on_time = Plug_Get_Configs_Value('agents', "car_on_time_{$this->Grade}");
-                        $car_pur_date = HOST_UNIX - $car_pur_date;
+                        $car_pur_date = PLUG_UNIX() - $car_pur_date;
                         if ($car_pur_date > $car_on_time) {
                             Plug_Print_Json(array('code' => '1', 'msg' => Plug_Lang("激活时间超") . $car_on_time . Plug_Lang('秒,无法冻结')));
                         }
@@ -145,7 +145,7 @@ class CardManageFeature
                         }
                         $car_pur_date = strtotime($array['car_pur_date']);
                         $car_on_time = Plug_Get_Configs_Value('agents', "car_delete_time_{$this->Grade}");
-                        $car_pur_date = HOST_UNIX - $car_pur_date;
+                        $car_pur_date = PLUG_UNIX() - $car_pur_date;
                         if ($car_pur_date > $car_on_time) {
                             Plug_Print_Json(array('code' => '1', 'msg' => Plug_Lang("激活时间超") . $car_on_time . Plug_Lang('秒,无法删除')));
                         }

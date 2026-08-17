@@ -99,7 +99,7 @@ if ($log == 1081) {
      * 查询用户信息
      */
     $carinfo = Plug_Get_Card_Info($icid, $icpwd, $daihao);
-    if ($carinfo == 1083 || $carinfo == 1084) Plug_Echo_Info($user_str_log[$arr_log], $arr_log);
+    if ($carinfo == 1083 || $carinfo == 1084) Plug_Echo_Info($user_str_log[$carinfo], $carinfo);
     if ($carinfo['L_IsLock'] > 0) {
         Plug_Echo_Info(Plug_Lang('当前激活码已经被冻结禁止登录当前软件.'), 5055);
     }
@@ -130,8 +130,8 @@ if ($log == 1081) {
 
 
     //-----------------------------------------
-    //记录登录时间用做扣点
-
+    //记录登录日志
+    Plug_Add_AppenLog('user_login_log', Plug_Lang('卡模式用户登录 卡号:') . $icid, $icid);
 
 
 

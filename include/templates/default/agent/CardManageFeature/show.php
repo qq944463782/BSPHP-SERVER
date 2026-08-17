@@ -555,15 +555,15 @@
       index: 'lib/index' /**主入口模块*/
     }).use(['jquery', 'index', 'table', 'layer'], function() {
       var admin = layui.admin,
-        $ = layui.$,
+        jq = layui.jquery,
         table = layui.table,
         layer = layui.layer;
-      var sourceText = $('#csshow').val() || '';
+      var sourceText = jq('#csshow').val() || '';
       var parseCardRows = function(text) {
         var rows = [];
         var lines = (text || '').split(/\r?\n/);
         for (var i = 0; i < lines.length; i++) {
-          var line = $.trim(lines[i]);
+          var line = jq.trim(lines[i]);
           if (!line) continue;
           var row = {
             KAID: line,
@@ -572,9 +572,9 @@
           };
           var m = line.match(/^卡:(.*?)\s+密:(.*?)\s+时间(.*?)天$/);
           if (m) {
-            row.KAID = $.trim(m[1]);
-            row.KAPWD = $.trim(m[2]);
-            row.CARDAY = $.trim(m[3]);
+            row.KAID = jq.trim(m[1]);
+            row.KAPWD = jq.trim(m[2]);
+            row.CARDAY = jq.trim(m[3]);
           }
           rows.push(row);
         }
@@ -591,11 +591,11 @@
           line = line.replace(/\{CARDAY\}/g, rows[i].CARDAY);
           out.push(line);
         }
-        $('#csshow').val(out.join('\n'));
+        jq('#csshow').val(out.join('\n'));
       };
 
-      $('#fmt_apply').on('click', function() {
-        var fmt = $('#css').val();
+      jq('#fmt_apply').on('click', function() {
+        var fmt = jq('#css').val();
         if (!fmt) {
           layer.msg('<?php echo Plug_Lang('请输入输出格式'); ?>');
           return;
@@ -603,14 +603,14 @@
         renderByFmt(fmt);
       });
 
-      $('.fmt-btn').on('click', function() {
-        var fmt = $(this).data('fmt');
-        $('#css').val(fmt);
+      jq('.fmt-btn').on('click', function() {
+        var fmt = jq(this).data('fmt');
+        jq('#css').val(fmt);
         renderByFmt(fmt);
       });
 
       // 默认使用标准模式展示
-      renderByFmt($('#css').val());
+      renderByFmt(jq('#css').val());
 
 
 
@@ -624,16 +624,16 @@
 
 
       /**监听行工具事件*/
-      $('.layuiadmin-btn-useradmin').on('click', function() {
+      jq('.layuiadmin-btn-useradmin').on('click', function() {
 
-        var formData = $('#bsphppost').serialize();
-        $.ajax({
+        var formData = jq('#bsphppost').serialize();
+        jq.ajax({
           type: "post",
           url: '',
           data: formData,
           dataType: "text",
           success: function(ret) {
-            $('#csshow').val(ret);
+            jq('#csshow').val(ret);
           },
           error: function(e, t) {
             layer.alert('<?php echo Plug_Lang('接口请求返还异常'); ?>');
@@ -650,21 +650,21 @@
       var clipboard = new Clipboard('#kami_copy', {
         text: function() {
           layer.alert('<?php echo Plug_Lang('复制成功'); ?>');
-          return $("#csshow").val();
+          return jq("#csshow").val();
         }
       });
 
 
 
-      if ($('#soso').val() != '') {
+      if (jq('#soso').val() != '') {
 
-        $('.layuiadmin-btn-useradmin').click();
+        jq('.layuiadmin-btn-useradmin').click();
       };
 
 
 
       window.savefiles = function() {
-        var data = $('#csshow').val();
+        var data = jq('#csshow').val();
         var urlObject = window.URL || window.webkitURL || window;
         var export_blob = new Blob([data]);
         var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
@@ -675,7 +675,7 @@
 
 
       window.input_select = function() {
-        $('#csshow').select();
+        jq('#csshow').select();
       };
 
 
