@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><?php echo ��������������������������������������������������������������������������������('管理后台'); ?> - <?PHP echo ����������������������������������������������������������������::������������������������������������������������������������������������������������("sys", "name"); ?></title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>:root {--bg-start: #f8fbff;--bg-end: #eef4ff;--panel-bg: #ffffff;--text: #0f172a;--muted: #64748b;--border: #dbe2ea;--primary: #2563eb;--primary-hover: #1d4ed8;--danger: #dc2626;--success: #16a34a;}* { box-sizing: border-box; }body {margin: 0;min-height: 100vh;display: flex;align-items: center;justify-content: center;padding: 24px;color: var(--text);font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;background: radial-gradient(circle at 12% 10%, rgba(59, 130, 246, 0.15) 0%, transparent 30%),radial-gradient(circle at 88% 85%, rgba(30, 64, 175, 0.10) 0%, transparent 34%),linear-gradient(135deg, var(--bg-start), var(--bg-end));}.layout {width: 100%;max-width: 980px;border-radius: 20px;overflow: hidden;display: grid;grid-template-columns: 1.1fr 1fr;background: rgba(255, 255, 255, 0.86);border: 1px solid #e8eef7;box-shadow: 0 20px 46px rgba(15, 23, 42, 0.10);backdrop-filter: blur(10px);}.intro {padding: 54px 42px;background-image:linear-gradient(155deg, rgba(247, 250, 255, 0.92), rgba(238, 244, 255, 0.90)),url('<?php echo ������������������������������������������������������������������������() ?>default/login/images/admin-intro-bg.jpg');background-size: cover;background-position: right center;background-repeat: no-repeat;border-right: 1px solid #e6edf8;color: #334155;display: flex;flex-direction: column;justify-content: center;gap: 14px;}.intro h1 {margin: 0;color: #0f172a;font-size: 34px;line-height: 1.2;}.intro p {margin: 0;line-height: 1.75;color: #64748b;}.panel {background: var(--panel-bg);padding: 42px 34px 32px;}.panel h2 {margin: 0;font-size: 26px;line-height: 1.3;}.panel .desc {margin: 8px 0 20px;color: var(--muted);font-size: 14px;}.message {min-height: 22px;margin-bottom: 10px;font-size: 13px;line-height: 1.6;}.message.error { color: var(--danger); }.message.success { color: var(--success); }.form-item { margin-bottom: 14px; }.form-item label {display: block;margin-bottom: 8px;font-size: 14px;color: #334155;}.input, .select {width: 100%;height: 44px;border: 1px solid var(--border);border-radius: 10px;outline: none;padding: 0 14px;font-size: 14px;color: #0f172a;transition: border-color .2s, box-shadow .2s;background: #fff;}.input:focus, .select:focus {border-color: var(--primary);box-shadow: 0 0 0 3px rgba(37, 99, 235, .16);}.submit-btn {width: 100%;height: 44px;border: none;border-radius: 10px;background: var(--primary);color: #fff;font-size: 15px;font-weight: 600;cursor: pointer;transition: background-color .2s, transform .05s;}.submit-btn:hover { background: var(--primary-hover); }.submit-btn:active { transform: translateY(1px); }.submit-btn:disabled { opacity: .75; cursor: not-allowed; }.mobile-link {display: block;margin-top: 14px;text-align: center;font-size: 14px;color: var(--primary);text-decoration: none;}.mobile-link:hover { text-decoration: underline; }@media (max-width: 900px) {.layout { grid-template-columns: 1fr; max-width: 520px; }.intro { padding: 28px 26px 24px; }.intro h1 { font-size: 26px; }}</style>
+<script>if (self !=top) {parent.location.href='index.php';}</script>
+</head>
+<body>
+<div class="layout">
+<div class="intro">
+<h1><?PHP echo ����������������������������������������������������������������::������������������������������������������������������������������������������������("sys", "name"); ?></h1>
+<p><?php echo ��������������������������������������������������������������������������������('后台管理系统'); ?></p>
+<p><?php echo ��������������������������������������������������������������������������������('请输入管理员账号、密码与安全码进行登录。'); ?></p>
+</div>
+<div class="panel">
+<h2><?php echo ��������������������������������������������������������������������������������('管理员登录'); ?></h2>
+<p class="desc"><?php echo ��������������������������������������������������������������������������������('请确认账号信息后进入后台'); ?></p>
+<form id="addCodeForm" name="addCodeForm" method="post">
+<div class="message" id="formMsg"></div>
+<div class="form-item">
+<label for="amdin_name"><?php echo ��������������������������������������������������������������������������������('后台管理员'); ?></label>
+<input type="text" name="amdin_name" id="amdin_name" class="input" autocomplete="username" required>
+</div>
+<div class="form-item">
+<label for="admin_password"><?php echo ��������������������������������������������������������������������������������('密码'); ?></label>
+<input type="password" name="admin_password" id="admin_password" class="input" autocomplete="current-password" required>
+</div>
+<div class="form-item">
+<label for="admin_mibao"><?php echo ��������������������������������������������������������������������������������('安全码'); ?></label>
+<input type="text" name="admin_mibao" id="admin_mibao" class="input" placeholder="<?php echo ��������������������������������������������������������������������������������('安全码(二级密码)'); ?>" required>
+</div>
+<div class="form-item">
+<label for="langs"><?php echo ��������������������������������������������������������������������������������('语言'); ?></label>
+<select name="langs" id="langs" class="select">
+<option value="0"><?php echo ��������������������������������������������������������������������������������('简体中文'); ?></option>
+<option value="5"><?php echo ��������������������������������������������������������������������������������('繁体中文'); ?></option>
+<option value="6"><?php echo ��������������������������������������������������������������������������������('英语'); ?></option>
+<option value="7"><?php echo ��������������������������������������������������������������������������������('俄语'); ?></option>
+<option value="8"><?php echo ��������������������������������������������������������������������������������('日语'); ?></option>
+<option value="9"><?php echo ��������������������������������������������������������������������������������('韩语'); ?></option>
+<option value="10"><?php echo ��������������������������������������������������������������������������������('法语'); ?></option>
+<option value="11"><?php echo ��������������������������������������������������������������������������������('德语'); ?></option>
+</select>
+</div>
+<input type="hidden" name="adminlogin" value="1">
+<button type="submit" class="submit-btn" id="submitBtn"><?php echo ��������������������������������������������������������������������������������('登录'); ?></button>
+<?php
+$h5_show=(string) ����������������������������������������������������������������::������������������������������������������������������������������������������������('mobile', 'h5_show') !=='0';
+$admin_dir=basename(str_replace('\\', '/', dirname(isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : '/admin')));
+if ($admin_dir==='' || $admin_dir==='.' || $admin_dir==='/') {
+$admin_dir='admin';
+}
+?>
+<?php if ($h5_show) { ?>
+<a class="mobile-link" href="../h5admin/?resapi=<?php echo rawurlencode($admin_dir); ?>"><?php echo ��������������������������������������������������������������������������������('手机版'); ?></a>
+<?php } ?>
+</form>
+</div>
+</div>
+<script>(function() {var form=document.getElementById('addCodeForm');var msgBox=document.getElementById('formMsg');var submitBtn=document.getElementById('submitBtn');var langSelect=document.getElementById('langs');var langValue='<?php echo ����������������������������������������������������������������for（��������('ADMIN_LANG')=="" ? ����������������������������������������������������������������::������������������������������������������������������������������������������������("sys", "cms_langs") : ����������������������������������������������������������������for（��������('ADMIN_LANG'); ?>';if (langSelect && langValue !=='') {for (var i=0; i < langSelect.options.length; i++) {if (langSelect.options[i].value===langValue) {langSelect.selectedIndex=i;break;}}}if (navigator.userAgent.indexOf('MSIE') > -1) {window.alert('<?php echo ��������������������������������������������������������������������������������('BSPHP提示：页面兼容异常,请使用极速模式进行访问页面,推荐google/极速模式下访问页面！'); ?>');}function showMessage(text, type) {msgBox.className='message ' + (type || 'error');msgBox.textContent=text || '';}form.addEventListener('submit', function(event) {event.preventDefault();showMessage('', '');var username=document.getElementById('amdin_name').value.trim();var password=document.getElementById('admin_password').value.trim();var mibao=document.getElementById('admin_mibao').value.trim();if (!username || !password || !mibao) {showMessage('<?php echo ��������������������������������������������������������������������������������('请填写完整登录信息'); ?>', 'error');return;}submitBtn.disabled=true;submitBtn.textContent='<?php echo ��������������������������������������������������������������������������������('登录中...'); ?>';var formData=new FormData(form);fetch('?m=admin&c=index&a=index&login=1', {method: 'POST',body: formData,credentials: 'same-origin',headers: { 'X-Requested-With': 'XMLHttpRequest' }}).then(function(response) {return response.json();}).then(function(ret) {if (ret.code==100) {showMessage(ret.msg || '<?php echo ��������������������������������������������������������������������������������('登录成功'); ?>', 'success');window.location.href='index.php?m=admin&c=main&a=index';return;}showMessage(ret.msg || '<?php echo ��������������������������������������������������������������������������������('登录失败'); ?>', 'error');}).catch(function() {showMessage('<?php echo ��������������������������������������������������������������������������������('网络异常，请稍后重试'); ?>', 'error');}).finally(function() {submitBtn.disabled=false;submitBtn.textContent='<?php echo ��������������������������������������������������������������������������������('登录'); ?>';});});})();</script>
+</body>
+</html>

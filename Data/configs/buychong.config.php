@@ -1,0 +1,1 @@
+<?php return array('buy_app_name'=>'','buy_app_lei'=>'','buy_gg'=>'欢迎使用BSPHP自动续费','buy_bz_lv'=>'续费账号','buy_bz_test'=>'请输入您登录软件续费账号','buy_qq'=>'944463782','buy_bsphp'=>'BSPHP验证 在线自助续费,有需要人工帮助请联系客服.','wbox_zfb'=>'1','wbox_qq'=>'1','wbox_wx'=>'1','wbox_pid'=>'1','wbox_key'=>'1','buy_mode'=>'0','z_zfb_off'=>'1','z_zfb_pid'=>'1','z_zfb_key'=>'1','z_zfb_user'=>'1',); ?>

@@ -1,0 +1,2 @@
+<?php return array('coode_login'=>'1','coode_registration'=>'1','coode_say'=>'1','coode_backpwd'=>'1','coode_api_name'=>'login.lg->*->Bsphp演示程序|
+re.lg->123456789|Bsphp演示程序|','charset_1'=>'0','charset_a'=>'0','charset_aa'=>'1','fontsize'=>'180','codelen'=>'3','width'=>'130','height'=>'45','font'=>'elephant.ttf','back_color'=>'-1','fontcolor_text'=>'-1','text_r'=>'0','createLine_a'=>'0','createLine_b'=>'0','appenconfig'=>'1',); ?>
