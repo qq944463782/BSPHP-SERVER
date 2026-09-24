@@ -24,6 +24,9 @@ ORDER BY a.`app_name` ASC, k.`lei_sort` ASC, k.`lei_id` ASC";
 $rs=Plug_Query($sql);
 $list=array();
 while ($v=Plug_Pdo_Fetch_Assoc($rs)) {
+if (!$this->agent_can_use_card_type((int) $v['lei_id'])) {
+continue;
+}
 $moshi=isset($v['app_MoShi']) ? $v['app_MoShi'] : '';
 $lei_type=isset($v['lei_type']) ? (int) $v['lei_type'] : 0;
 $list[]=array(
@@ -42,6 +45,18 @@ $list[]=array(
 );
 }
 Plug_Print_Json(array('code'=> 100, 'msg'=> 'ok', 'data'=> $list));
+}
+private function agent_can_use_card_type($lei_id)
+{
+$lei_id=(int) $lei_id;
+if ($lei_id <=0) {
+return false;
+}
+$agent_card_rule=trim((string) $this->user_array['user_anget_carid']);
+if ($agent_card_rule==='' || $agent_card_rule==='*') {
+return true;
+}
+return (bool) strrpos('###,' . $agent_card_rule . ',', ',' . $lei_id . ',');
 }
 function call_make()
 {
@@ -71,6 +86,9 @@ if ($shu > $make_card_mun) {
 Plug_Print_Json(array('code'=> 1, 'msg'=> Plug_Lang('超出范围,每次制卡最大数量') . " {$make_card_mun} 张!"));
 }
 if ($select <=0) {
+Plug_Print_Json(array('code'=> 1, 'msg'=> Plug_Lang('请选择你要制作的软件的充值卡类型!')));
+}
+if (!$this->agent_can_use_card_type($select)) {
 Plug_Print_Json(array('code'=> 1, 'msg'=> Plug_Lang('请选择你要制作的软件的充值卡类型!')));
 }
 $leixing_array=Plug_Query_One('bs_php_kalei', 'lei_id', $select, ' * ');
