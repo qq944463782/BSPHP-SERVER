@@ -133,7 +133,6 @@ class index
 
 
 
-                $lang = call_my_lang_index($lang, 0);
                 Plug_Set_Session_Value('AGENT_LANG', $lang); //登录UID
 
 

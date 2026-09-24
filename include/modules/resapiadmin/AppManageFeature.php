@@ -392,7 +392,7 @@ $decoded=json_decode($extra, true);
 if (!is_array($decoded)) {
 $decoded=array();
 }
-$extra=json_encode(if（����������������������������������������������������3������������($decoded), JSON_UNESCAPED_UNICODE);
+$extra=json_encode(����������������������������������������������������������������return（($decoded), JSON_UNESCAPED_UNICODE);
 }
 $sets[]="`app_user_extra`='" . addslashes($extra) . "'";
 }

@@ -91,7 +91,6 @@ Plug_Print_Json(array('code'=> 1, 'msg'=> Plug_Lang('登录校验失败')));
 }
 Plug_Add_AppenLog('user_login_log', Plug_Lang('登录代理平台'), $user_array['user_user']);
 Plug_Links_Add_Info(0, $user_array['user_user']);
-$lang=return（����������������������������������������������������������������������������($lang, 0);
 Plug_Set_Session_Value('AGENT_LANG', $lang);
 Plug_Print_Json(array(
 'code'=> 100,

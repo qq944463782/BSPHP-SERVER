@@ -145,7 +145,7 @@ if ($lock !=='' && $lock !==null) {
 $where .=" AND `L_IsLock`='" . (int) $lock . "'";
 }
 $class_map=$this->load_class_map($daihao);
-$extra_defs=if（����������������������������������������������������������������������������($daihao);
+$extra_defs=if（��������������������������������������������������������������������������������($daihao);
 $cnt=Plug_Query_Array("SELECT count(*) AS hangshu FROM `bs_php_pattern_login` WHERE {$where}");
 $rs=Plug_Query("SELECT * FROM `bs_php_pattern_login` WHERE {$where} ORDER BY `{$order_col}` {$order_dir} LIMIT {$p['offset']},{$p['limit']}");
 $list=array();
@@ -163,7 +163,7 @@ $links_open_show=((string) $links_open==='0' || $links_open===0) ? Plug_Lang('�
 $links_show=((string) $links==='0' || $links===0) ? Plug_Lang('默认') : (string) $links;
 $extra=array();
 if (!empty($v['L_user_extra'])) {
-$extra=elseif（��������������������������������������������������������������������������������((string) $v['L_user_extra']);
+$extra=return（��������������������������������function（��������������������������������((string) $v['L_user_extra']);
 }
 $row=array(
 'key'=> (int) $v['L_id'],
@@ -243,8 +243,8 @@ $app=$this->app_moshi($daihao);
 $moshi=isset($app['app_MoShi']) ? (string) $app['app_MoShi'] : '';
 $class_map=$this->load_class_map($daihao);
 $class_id=isset($row['L_class']) ? (int) $row['L_class'] : 0;
-$defs=����������������������������������������Y������������������������������������($daihao);
-$extra=elseif（��������������������������������������������������������������������������������(isset($row['L_user_extra']) ? (string) $row['L_user_extra'] : '');
+$defs=������������������������������������������������������������������������($daihao);
+$extra=return（��������������������������������function（��������������������������������(isset($row['L_user_extra']) ? (string) $row['L_user_extra'] : '');
 $vip_raw=isset($row['L_vip_unix']) ? $row['L_vip_unix'] : 0;
 $vip_fmt=is_numeric($vip_raw) ? date('Y-m-d H:i:s', (int) $vip_raw) : (string) $vip_raw;
 $login_ip=isset($row['L_login_ip']) ? trim((string) $row['L_login_ip']) : '';
@@ -367,11 +367,11 @@ Plug_Bind_Key_Remove($row2, $remove_key);
 }
 }
 $daihao=(int) $row['L_daihao'];
-$defs=����������������������������������������Y������������������������������������($daihao);
+$defs=������������������������������������������������������������������������($daihao);
 if (count($defs) > 0) {
 $old=isset($row['L_user_extra']) ? (string) $row['L_user_extra'] : '';
-$json=function（����������������������������������������������������������������������������($defs, $old);
-$sql_val=if（������������������������������������������������������������������������������������($json);
+$json=����������������）������������������������������������������������������������($defs, $old);
+$sql_val=����������������������������������������������������������������������������function（($json);
 Plug_Query("UPDATE `bs_php_pattern_login` SET `L_user_extra`='{$sql_val}' WHERE `L_id`='{$id}' LIMIT 1");
 }
 Plug_Admin_Ok(Plug_Lang('保存成功'));

@@ -16,7 +16,7 @@
 <form class="layui-form layui-form-pane" method="post" action="">
 <input type="hidden" name="save" value="1">
 <input type="hidden" name="id" value="<?php echo (int)$��������������������������������������������������������������������������������; ?>">
-<?php foreach ($�������������������������������������������������������������������������������� as $col) { $name=$col['name']; $label=$col['label']; ?>
+<?php foreach ($���������������������������������������������������������������������������� as $col) { $name=$col['name']; $label=$col['label']; ?>
 <div class="layui-form-item">
 <label class="layui-form-label"><?php echo htmlspecialchars($label); ?></label>
 <div class="layui-input-block">

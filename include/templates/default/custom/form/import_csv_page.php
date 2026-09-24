@@ -11,7 +11,7 @@
 <body>
 <div class="layui-fluid">
 <div class="layui-card">
-<div class="layui-card-header">导入CSV - <?php echo htmlspecialchars($��������������������������������������������������������������������������������['model_name'] ?? ''); ?></div>
+<div class="layui-card-header">导入CSV - <?php echo htmlspecialchars($）����������������������������������������������������������������['model_name'] ?? ''); ?></div>
 <div class="layui-card-body">
 <form class="layui-form layui-form-pane" method="post" action="" enctype="multipart/form-data">
 <input type="hidden" name="save" value="1">

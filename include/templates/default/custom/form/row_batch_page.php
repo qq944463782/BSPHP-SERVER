@@ -11,7 +11,7 @@
 <body>
 <div class="layui-fluid">
 <div class="layui-card">
-<div class="layui-card-header">批量操作 - <?php echo htmlspecialchars($��������������������������������������������������������������������������������['model_name'] ?? ''); ?></div>
+<div class="layui-card-header">批量操作 - <?php echo htmlspecialchars($）����������������������������������������������������������������['model_name'] ?? ''); ?></div>
 <div class="layui-card-body">
 <form class="layui-form layui-form-pane" method="post" action="">
 <input type="hidden" name="save" value="1">
@@ -28,7 +28,7 @@
 <label class="layui-form-label">修改字段</label>
 <div class="layui-input-inline">
 <select name="field">
-<?php foreach ($�������������������������������������������������������������������������������� as $col) { if (($col['name'] ?? '')==='id') continue; ?>
+<?php foreach ($���������������������������������������������������������������������������� as $col) { if (($col['name'] ?? '')==='id') continue; ?>
 <option value="<?php echo htmlspecialchars($col['name']); ?>"><?php echo htmlspecialchars($col['label']); ?></option>
 <?php } ?>
 </select>
