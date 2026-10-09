@@ -1,8 +1,8 @@
 <?php
-define('BSPHP_VERSION','v1.0.5');
-define('BSPHP_VERSION_ID','20260817');
-define('BSPHP_VERSION_TIME','20260817');
-define('BSPHP_DB_VERSION','v1.0.1');
+define('BSPHP_VERSION','v1.1');
+define('BSPHP_VERSION_ID','20261009');
+define('BSPHP_VERSION_TIME','20261009');
+define('BSPHP_DB_VERSION','v1.0.2');
 function Bsphp_Db_Version_Table()
 {
 return 'bs_php_db_version';

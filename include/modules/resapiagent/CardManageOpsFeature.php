@@ -209,4 +209,32 @@ return $ok(Plug_Lang('备注设置成功!'), $array['car_name']);
 }
 return $fail(Plug_Lang('你没有选择操作项目!'));
 }
+function call_filters()
+{
+Plug_Print_Json(array('code'=> 100, 'msg'=> 'ok', 'data'=> $this->filter_payload()));
+}
+private function filter_payload()
+{
+$app_in=Plug_Get_Agent_Appinfo_Array($this->user_array['user_uid']);
+$apps=array();
+$app_map=array();
+$rs=Plug_Query("SELECT `app_daihao`,`app_name` FROM `bs_php_appinfo` WHERE `app_daihao` {$app_in} LIMIT 100");
+while ($v=Plug_Pdo_Fetch_Assoc($rs)) {
+$apps[]=$v;
+$app_map[$v['app_daihao']]=$v['app_name'];
+}
+$rule=(string) $this->user_array['user_anget_carid'];
+$types=array();
+$lei_rs=Plug_Query("SELECT `lei_id`,`lei_name`,`lei_daihao` FROM `bs_php_kalei` ORDER BY `lei_id` ASC");
+while ($v=Plug_Pdo_Fetch_Assoc($lei_rs)) {
+if ($rule !=='' && $rule !=='*') {
+if (!strrpos('###' . $rule, $v['lei_id'] . ',')) {
+continue;
+}
+}
+$v['app_name']=isset($app_map[$v['lei_daihao']]) ? $app_map[$v['lei_daihao']] : '';
+$types[]=$v;
+}
+return array('apps'=> $apps, 'types'=> $types);
+}
 }
