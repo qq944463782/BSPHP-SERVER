@@ -71,30 +71,32 @@ class MyAgentListFeature
         $all = Plug_Set_Post('all');
         $select_class = Plug_Set_Post('select_class');
         if ($Submit_class) {
+            // user_yao_User 可能存上级 UID 或账号
+            $yao_where = "(`user_yao_User`='{$this->user_array['user_uid']}' OR `user_yao_User`='{$this->user_array['user_user']}')";
             if ($select_class == 2) {
                 $txt = Plug_Set_Post('txt');
-                $sql = "UPDATE  `bs_php_user` SET  `user_anget_beizhu` =  '{$txt}' WHERE  `bs_php_user`.`user_uid` ='{$all}' and `user_yao_User`='{$this->user_array['user_user']}';";
+                $sql = "UPDATE  `bs_php_user` SET  `user_anget_beizhu` =  '{$txt}' WHERE  `bs_php_user`.`user_uid` ='{$all}' and {$yao_where};";
                 if (Plug_Query($sql)) {
                     Plug_Print_Json(array('code' => '1', 'msg' => Plug_Lang("备注修改成功")));
                 } else {
                     Plug_Print_Json(array('code' => '1', 'msg' => Plug_Lang("备注修改失败")));
                 }
             } elseif ($select_class == 3) {
-                $sql = "UPDATE  `bs_php_user` SET  `user_IsLock` =  '1' WHERE  `bs_php_user`.`user_uid` in ({$all}) and `user_yao_User`='{$this->user_array['user_user']}';";
+                $sql = "UPDATE  `bs_php_user` SET  `user_IsLock` =  '1' WHERE  `bs_php_user`.`user_uid` in ({$all}) and {$yao_where};";
                 if (Plug_Query($sql)) {
                     Plug_Print_Json(array('code' => '1', 'msg' => Plug_Lang("冻结成功")));
                 } else {
                     Plug_Print_Json(array('code' => '1', 'msg' => Plug_Lang("冻结失败")));
                 }
             } elseif ($select_class == 4) {
-                $sql = "UPDATE  `bs_php_user` SET  `user_IsLock` =  '0' WHERE  `bs_php_user`.`user_uid` in ({$all}) and `user_yao_User`='{$this->user_array['user_user']}';";
+                $sql = "UPDATE  `bs_php_user` SET  `user_IsLock` =  '0' WHERE  `bs_php_user`.`user_uid` in ({$all}) and {$yao_where};";
                 if (Plug_Query($sql)) {
                     Plug_Print_Json(array('code' => '1', 'msg' => Plug_Lang("解封成功")));
                 } else {
                     Plug_Print_Json(array('code' => '1', 'msg' => Plug_Lang("解封失败")));
                 }
             } else {
-                call_my_alert(Plug_Lang('你没有选择操作项目'));
+                Plug_Alert(Plug_Lang('你没有选择操作项目'));
             }
         }
 
@@ -162,12 +164,13 @@ class MyAgentListFeature
             $soso_db_table = 'user_user';
         }
 
+        $yao_where = "(`user_yao_User`='{$this->user_array['user_uid']}' OR `user_yao_User`='{$this->user_array['user_user']}')";
         if ($soso_id == 15 || $soso_id == 16 || $soso_id == 17) {
-            $sql = "SELECT*FROM`bs_php_user`WHERE `user_yao_User`='{$this->user_array['user_uid']}' and user_daili > 0 AND `{$soso_db_table}`>='{$soso}' ORDER BY`user_uid`{$DESC} LIMIT {$db_ID},{$shu} ;";
-            $sql_rows = "SELECT count(*)as'hangshu'FROM`bs_php_user`WHERE `user_yao_User`='{$this->user_array['user_uid']}' AND user_daili > 0 AND `{$soso_db_table}`>='{$soso}' ORDER BY`user_uid`{$DESC} ;";
+            $sql = "SELECT*FROM`bs_php_user`WHERE {$yao_where} and user_daili > 0 AND `{$soso_db_table}`>='{$soso}' ORDER BY`user_uid`{$DESC} LIMIT {$db_ID},{$shu} ;";
+            $sql_rows = "SELECT count(*)as'hangshu'FROM`bs_php_user`WHERE {$yao_where} AND user_daili > 0 AND `{$soso_db_table}`>='{$soso}' ORDER BY`user_uid`{$DESC} ;";
         } else {
-            $sql = "SELECT*FROM`bs_php_user`WHERE `user_yao_User`='{$this->user_array['user_uid']}' AND user_daili > 0 AND `{$soso_db_table}`LIKE '%{$soso}%'  ORDER BY`user_uid`{$DESC} LIMIT {$db_ID},{$shu} ";
-            $sql_rows = "SELECT   count(*)as'hangshu' FROM`bs_php_user`WHERE `user_yao_User`='{$this->user_array['user_uid']}' AND user_daili > 0 AND `{$soso_db_table}`LIKE '%{$soso}%'  ORDER BY`user_uid`{$DESC} ;";
+            $sql = "SELECT*FROM`bs_php_user`WHERE {$yao_where} AND user_daili > 0 AND `{$soso_db_table}`LIKE '%{$soso}%'  ORDER BY`user_uid`{$DESC} LIMIT {$db_ID},{$shu} ";
+            $sql_rows = "SELECT   count(*)as'hangshu' FROM`bs_php_user`WHERE {$yao_where} AND user_daili > 0 AND `{$soso_db_table}`LIKE '%{$soso}%'  ORDER BY`user_uid`{$DESC} ;";
         }
 
         $db_array_value = Plug_Query($sql);

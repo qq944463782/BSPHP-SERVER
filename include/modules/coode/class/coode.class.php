@@ -97,16 +97,29 @@ imagestring($this->__img, mt_rand(1, 5), mt_rand(0, $this->width), mt_rand(0, $t
 }
 private function outPut()
 {
-Header("Content-type: image/jpeg");
+while (ob_get_level() > 0) {
+ob_end_clean();
+}
+header('Content-Type: image/jpeg');
+header('Cache-Control: no-store, no-cache, must-revalidate');
+header('Pragma: no-cache');
 imagejpeg($this->__img);
 }
-public function doimg()
+public function build()
 {
 $this->createBg();
 $this->createCode();
 $this->createLine();
 $this->createFont();
+}
+public function send()
+{
 $this->outPut();
+}
+public function doimg()
+{
+$this->build();
+$this->send();
 }
 public function getCode()
 {

@@ -139,7 +139,7 @@ class MakeCardBalanceFeature
                     Plug_Query($sql);
                     Plug_Add_AppenLog('agent_ka_log', Plug_Lang("代理制卡入库成功") . ",{$app_name[$leixing_array['lei_daihao']]}-{$leixing_array['lei_name']}," . Plug_Lang("数量") . ":{$shu}", $this->user_array['user_user']);
                 }
-                Plug_Print_Json(array('code' => 8, 'msg' => Plug_Lang("制卡成功,已存到库存卡!"), 'url' => 'index.php?m=agent&c=kuka&a=kuka_add'));
+                Plug_Print_Json(array('code' => 8, 'msg' => Plug_Lang("制卡成功,已存到库存卡!"), 'url' => 'index.php?m=agent&c=MakeCardStockFeature&a=table'));
             }
 
             Plug_Print_Json(array('code' => 8, 'msg' => Plug_Lang("制卡成功!"), 'url' => 'index.php?m=agent&c=CardManageFeature&a=show&date=' . urlencode($zhi_date) . '&id=' . $select));

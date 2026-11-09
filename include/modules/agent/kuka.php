@@ -224,10 +224,13 @@ class kuka
 
 
         $uid = (int)Plug_Set_Get('ids');
-        $sql = "SELECT * FROM `bs_php_user` WHERE `user_yao_User` = '{$this->user_array['user_user']}' and `user_uid` = '{$uid}' ";
+        // user_yao_User 可能存上级 UID 或账号，兼容两种历史数据
+        $self_uid = $this->user_array['user_uid'];
+        $self_user = $this->user_array['user_user'];
+        $sql = "SELECT * FROM `bs_php_user` WHERE (`user_yao_User` = '{$self_uid}' OR `user_yao_User` = '{$self_user}') AND `user_uid` = '{$uid}' AND `user_daili` > 0 ";
         $user_array_agent = Plug_Query_Array($sql);
         if (!$user_array_agent) {
-            call_my_alert(Plug_Lang('账号不存在.'));
+            Plug_Alert(Plug_Lang('账号不存在.'));
         }
         $app_name = Plug_GetAppInfoNameArray();
         /*******获取用户分组*****/
@@ -356,10 +359,13 @@ class kuka
 
 
         $uid = (int)Plug_Set_Get('ids');
-        $sql = "SELECT * FROM `bs_php_user` WHERE `user_yao_User` = '{$this->user_array['user_user']}' and `user_uid` = '{$uid}' ";
+        // user_yao_User 可能存上级 UID 或账号，兼容两种历史数据
+        $self_uid = $this->user_array['user_uid'];
+        $self_user = $this->user_array['user_user'];
+        $sql = "SELECT * FROM `bs_php_user` WHERE (`user_yao_User` = '{$self_uid}' OR `user_yao_User` = '{$self_user}') AND `user_uid` = '{$uid}' AND `user_daili` > 0 ";
         $user_array_agent = Plug_Query_Array($sql);
         if (!$user_array_agent) {
-            call_my_alert(Plug_Lang('账号不存在.'));
+            Plug_Alert(Plug_Lang('账号不存在.'));
         }
         $app_name = Plug_GetAppInfoNameArray();
         /*******获取用户分组*****/

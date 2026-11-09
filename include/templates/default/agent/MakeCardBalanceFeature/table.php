@@ -70,7 +70,7 @@ echo  '<option value="0">没有可制作卡类，联系上级分配</option>';
 <input type="radio" name="make_mode" value="direct" title="<?php echo Plug_Lang('立即制作'); ?>" lay-filter="make_mode" checked>
 <input type="radio" name="make_mode" value="stock" title="<?php echo Plug_Lang('存到库存卡'); ?>" lay-filter="make_mode">
 </div>
-<div class="layui-form-mid layui-word-aux"><?php echo Plug_Lang('立即制作会直接出卡；存到库存卡用于后续库存制卡。'); ?> <a href="index.php?m=agent&c=kuka&a=kuka_add" ><?php echo Plug_Lang('查看库存卡'); ?></a></div>
+<div class="layui-form-mid layui-word-aux"><?php echo Plug_Lang('立即制作会直接出卡；存到库存卡用于后续库存制卡。'); ?> <a href="index.php?m=agent&c=MakeCardStockFeature&a=table" ><?php echo Plug_Lang('查看库存卡'); ?></a></div>
 </div>
 <div class="layui-form-item" id="beizhu-item">
 <label class="layui-form-label"><?php echo Plug_Lang('备注'); ?></label>
