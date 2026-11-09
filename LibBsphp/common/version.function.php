@@ -1,5 +1,5 @@
 <?php
-define('BSPHP_VERSION','v1.5');
+define('BSPHP_VERSION','v1.6');
 define('BSPHP_VERSION_ID','20271108');
 define('BSPHP_VERSION_TIME','20271108');
 define('BSPHP_DB_VERSION','v1.5');
